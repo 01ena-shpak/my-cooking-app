@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head') %>
+</head>
+<body>
+    <%- include('../partials/header') %>
+
+    <main>
+	<section class="hero" aria-labelledby="hero-title">
+		<div class="hero-text">
+			<h1 id="hero-title" data-i18n="home.heroTitle">
+				Discover and create unique AI-recipes
+			</h1>
+
+			<p data-i18n="home.heroDescription">
+				Enter your ingredients and get an instant, chef-level recipe — either from our curated dish library or crafted by artificial intelligence.
+			</p>
+
+			<p data-i18n="home.heroHighlight">
+				<strong>Simple, fast, and delicious.</strong>
+			</p>
+
+			<a href="/recipes" class="hero-cta" data-i18n="home.getStartedButton">
+				Get Started
+			</a>
+		</div>
+
+		<div class="hero-image">
+			<picture>
+				<source srcset="/img/hero-mobile.png" media="(max-width: 600px)">
+				<img
+					src="/img/hero-desktop.png"
+					alt="Plate of pasta with chicken, broccoli and tomatoes"
+					data-i18n="home.heroImageAlt"
+				>
+			</picture>
+		</div>
+	</section>
+
+	<section class="how-it-works" aria-labelledby="how-it-works-title">
+		<h2 id="how-it-works-title" data-i18n="home.howItWorksTitle">
+			How it works?
+		</h2>
+
+		<div class="steps">
+			<article class="step" aria-label="Step 1: Enter ingredients">
+				<h3 data-i18n="home.step1.title">
+					<span>1</span> Enter ingredients
+				</h3>
+				<p data-i18n="home.step1.text">
+					Tell us what you have — vegetables, proteins, snacks, anything.
+				</p>
+			</article>
+
+			<article class="step" aria-label="Step 2: Receive a recipe">
+				<h3 data-i18n="home.step2.title">
+					<span>2</span> Receive a recipe
+				</h3>
+				<p data-i18n="home.step2.text">
+					Get a customized recipe instantly, powered by AI and our dish collection.
+				</p>
+			</article>
+
+			<article class="step" aria-label="Step 3: Save to favorites">
+				<h3 data-i18n="home.step3.title">
+					<span>3</span> Save to your favorites
+				</h3>
+				<p data-i18n="home.step3.text">
+					Keep the best recipes in your personal collection for quick access anytime.
+				</p>
+			</article>
+		</div>
+	</section>
+</main>
+
+    <%- include('../partials/footer') %>
+</body>
+</html>

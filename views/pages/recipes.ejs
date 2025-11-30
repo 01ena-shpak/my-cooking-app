@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include('../partials/head') %>
+</head>
+<body>
+	<%- include('../partials/header') %>
+
+	<main>
+		<section class="recipes-search" aria-labelledby="recipes-title">
+			<h1 id="recipes-title" data-i18n="recipes.title">
+				Explore recipes made just for you
+			</h1>
+
+			<%- include('../partials/search-bar') %>
+		</section>
+
+		<section class="recipes-results" aria-label="Recipe results">
+			<div class="recipes-grid">
+				<%- include('../partials/recipe-card') %>
+				<%- include('../partials/recipe-card') %>
+				<%- include('../partials/recipe-card') %>
+				<%- include('../partials/recipe-card') %>
+				<%- include('../partials/recipe-card') %>
+				<%- include('../partials/recipe-card') %>
+			</div>
+		</section>
+
+		<section class="recipes-empty" aria-label="No recipes found">
+			<p data-i18n="recipes.emptyText">
+				No recipes found. Try using fewer filters or search by a different ingredient.
+				Our AI will keep learning from your choices.
+			</p>
+		</section>
+	</main>
+
+	<%- include('../partials/footer') %>
+</body>
+</html>
+

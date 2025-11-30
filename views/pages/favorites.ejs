@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include('../partials/head') %>
+</head>
+<body>
+	<%- include('../partials/header') %>
+
+	<main>
+		<section class="favorites-search" aria-labelledby="favorites-title">
+			<h1 id="favorites-title" data-i18n="favorites.title">
+				Favorites
+			</h1>
+
+			<%- include('../partials/search-bar') %>
+		</section>
+
+		<section class="favorites-results" aria-label="Favorite recipes">
+			<div class="favorites-grid">
+				<%- include('../partials/recipe-card') %>
+				<%- include('../partials/recipe-card') %>
+				<%- include('../partials/recipe-card') %>
+				<%- include('../partials/recipe-card') %>
+				<%- include('../partials/recipe-card') %>
+			</div>
+		</section>
+
+		<section class="favorites-empty" aria-label="No favorite recipes yet">
+			<p data-i18n="favorites.emptyText">
+				You don’t have any saved recipes yet. Generate one or choose from the catalog.
+			</p>
+		</section>
+	</main>
+
+	<%- include('../partials/footer') %>
+</body>
+</html>

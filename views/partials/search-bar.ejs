@@ -1,0 +1,37 @@
+<form
+	class="recipes-search-form"
+	role="search"
+	aria-label="Search recipes"
+>
+	<label
+		for="recipes-query"
+		class="visually-hidden"
+		data-i18n="recipes.searchLabel"
+	>
+		Search by recipe name or ingredient
+	</label>
+
+	<input
+		id="recipes-query"
+		name="q"
+		type="search"
+		placeholder="Search by recipe name or ingredient..."
+		data-i18n="recipes.searchPlaceholder"
+	>
+
+	<button type="submit" data-i18n="recipes.searchButton">
+		Search
+	</button>
+
+	<div class="recipes-filters" aria-label="Filter recipes">
+		<button type="button" data-i18n="recipes.filter.time">
+			Time
+		</button>
+		<button type="button" data-i18n="recipes.filter.calories">
+			Calories
+		</button>
+		<button type="button" data-i18n="recipes.filter.difficulty">
+			Difficulty ▾
+		</button>
+	</div>
+</form>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include('../partials/head') %>
+</head>
+<body>
+	<%- include('../partials/header') %>
+
+	<main
+		class="recipe-page"
+		itemscope
+		itemtype="https://schema.org/Recipe"
+	>
+		<section class="recipe-hero" aria-labelledby="recipe-title">
+			<div class="recipe-hero__image">
+				<picture>
+					<source srcset="/img/rec-mobile.png" media="(max-width: 600px)">
+					<img
+						src="/img/rec-desktop.png"
+						alt="Cozy herb chicken pasta on a plate with vegetables"
+						itemprop="image"
+						data-i18n="recipe.imageAlt"
+					>
+				</picture>
+			</div>
+
+			<div class="recipe-hero__info">
+				<h1 id="recipe-title" itemprop="name" data-i18n="recipe.title">
+					Cozy Herb Chicken Pasta
+				</h1>
+
+				<div class="recipe-hero__meta">
+					<span
+						class="recipe-meta__time"
+						itemprop="totalTime"
+						content="PT25M"
+						data-i18n="recipe.time"
+					>
+						⏱ 25 min
+					</span>
+					<span
+						class="recipe-meta__calories"
+						itemprop="calories"
+						data-i18n="recipe.calories"
+					>
+						🔥 520 kcal
+					</span>
+				</div>
+
+				<button
+					type="button"
+					class="recipe-favorite-button"
+					data-i18n="recipe.saveToFavorites"
+				>
+					♡ Save to Favorites
+				</button>
+			</div>
+		</section>
+
+		<section class="recipe-content" aria-label="Recipe details">
+			<article class="recipe-ingredients" aria-labelledby="ingredients-title">
+				<h2 id="ingredients-title" data-i18n="recipe.ingredientsTitle">
+					Ingredients
+				</h2>
+
+				<p data-i18n="recipe.servings">
+					For 2 servings:
+				</p>
+
+				<ul itemprop="recipeIngredient">
+					<li data-i18n="recipe.ing1">200 g spaghetti or pasta of choice</li>
+					<li data-i18n="recipe.ing2">1 chicken breast, sliced</li>
+					<li data-i18n="recipe.ing3">1 tbsp olive oil</li>
+					<li data-i18n="recipe.ing4">1 tbsp butter</li>
+					<li data-i18n="recipe.ing5">2 cloves garlic, minced</li>
+					<li data-i18n="recipe.ing6">6–8 cherry tomatoes</li>
+					<li data-i18n="recipe.ing7">150 g broccoli florets</li>
+					<li data-i18n="recipe.ing8">1 tsp Italian herbs (oregano, basil, thyme)</li>
+					<li data-i18n="recipe.ing9">Salt & pepper to taste</li>
+					<li data-i18n="recipe.ing10">30 g grated parmesan (optional)</li>
+				</ul>
+			</article>
+
+			<article class="recipe-instructions" aria-labelledby="instructions-title">
+				<h2 id="instructions-title" data-i18n="recipe.instructionsTitle">
+					Instructions
+				</h2>
+
+				<ol itemprop="recipeInstructions">
+					<li data-i18n="recipe.step1">
+						<strong>1. Prepare the pasta.</strong>
+						Cook spaghetti in salted boiling water until al dente. Drain and set aside.
+					</li>
+					<li data-i18n="recipe.step2">
+						<strong>2. Cook the chicken.</strong>
+						Season the chicken with salt, pepper, and herbs. Heat olive oil in a pan, add chicken, and cook until golden on both sides. Slice into strips.
+					</li>
+					<li data-i18n="recipe.step3">
+						<strong>3. Sauté vegetables.</strong>
+						In the same pan, melt butter, add garlic, broccoli, and cherry tomatoes. Cook until slightly soft.
+					</li>
+					<li data-i18n="recipe.step4">
+						<strong>4. Combine everything.</strong>
+						Add cooked pasta to the pan, toss with vegetables, and adjust seasoning.
+					</li>
+					<li data-i18n="recipe.step5">
+						<strong>5. Plate the dish.</strong>
+						Serve pasta topped with sliced chicken. Add parmesan if desired.
+					</li>
+				</ol>
+			</article>
+		</section>
+
+		<section class="recipe-back" aria-label="Back to recipes list">
+			<a href="/recipes" class="recipe-back__link" data-i18n="recipe.backToRecipes">
+				Back to Recipes
+			</a>
+		</section>
+	</main>
+
+	<%- include('../partials/footer') %>
+</body>
+</html>
