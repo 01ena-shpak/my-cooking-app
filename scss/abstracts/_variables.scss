@@ -1,0 +1,28 @@
+// COLOR SYSTEM
+$color-primary: #9B3A3A;    // заголовки, ключові акценти
+$color-secondary: #D6C160;  // фон карток
+$color-bg: #F9F4E1;         // основний фон сторінки
+$color-accent: #F26A2E;     // CTA кнопки
+$color-dark: #4A1E1E;       // основний текст, хедер, меню
+
+$color-text-main: $color-dark;
+$color-text-light: $color-bg;
+
+// TYPOGRAPHY
+$font-main: 'Work Sans', sans-serif;    // Основний текст
+$font-heading: 'Fugaz One', cursive;    // Заголовки
+
+// Розміри
+$font-size-base: 16px;
+
+// LAYOUT
+$bp-sm: 480px;
+$bp-md: 768px;
+$bp-lg: 1200px;
+
+$container-max-width: 1120px;
+$container-padding-x: 16px;
+
+$radius-lg: 20px;
+$radius-md: 12px;
+$shadow-soft: 0 8px 20px rgba(0, 0, 0, 0.18);

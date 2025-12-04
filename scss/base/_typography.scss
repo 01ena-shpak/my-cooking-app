@@ -1,0 +1,82 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+
+/* базово орієнтуємось на мобайл (значення з макету mobile) */
+
+html {
+  font-size: 16px;
+}
+
+/* body: 15px на мобайл, 24px на десктоп */
+body {
+  font-family: $font-main;
+  color: $color-text-main;
+  background-color: $color-bg;
+  line-height: 1.5;
+  font-size: rem(15);
+}
+
+/* Заголовки – шрифт Fugaz One */
+h1,
+h2,
+.heading-lg {
+  font-family: $font-heading;
+  color: $color-primary;
+}
+
+/* MOBILE SIZES (макет mobile) */
+h1 {
+  font-size: rem(32);   // H1 mobile = 32px
+}
+
+h2 {
+  font-size: rem(20);   // H2 mobile = 20px
+}
+
+h3 {
+  font-size: rem(18);
+  font-weight: 600;
+}
+
+p {
+  font-size: rem(15);   // Body mobile = 15px
+}
+
+/* Footer text (mobile 13px) */
+.site-footer,
+.site-footer * {
+	font-size: rem(13);
+}
+
+strong {
+  font-weight: 600;
+}
+
+/* -------- DESKTOP ≥ 1200px (значення з макету desktop) -------- */
+
+@media (min-width: $bp-lg) {
+  body {
+    font-size: rem(24);    // Body desktop = 24px
+  }
+
+  h1 {
+    font-size: rem(64);    // H1 desktop = 64px
+  }
+
+  h2 {
+    font-size: rem(36);    // H2 desktop = 36px
+  }
+
+  h3 {
+    font-size: rem(24);
+  }
+
+  p {
+    font-size: rem(24);    // загальний body-text
+  }
+
+  .site-footer,
+  .site-footer * {
+	font-size: rem(20);    // Footer desktop = 20px
+  }
+}

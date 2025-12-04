@@ -1,0 +1,614 @@
+@charset "UTF-8";
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* базово орієнтуємось на мобайл (значення з макету mobile) */
+html {
+  font-size: 16px;
+}
+
+/* body: 15px на мобайл, 24px на десктоп */
+body {
+  font-family: "Work Sans", sans-serif;
+  color: #4A1E1E;
+  background-color: #F9F4E1;
+  line-height: 1.5;
+  font-size: 0.9375rem;
+}
+
+/* Заголовки – шрифт Fugaz One */
+h1,
+h2,
+.heading-lg {
+  font-family: "Fugaz One", cursive;
+  color: #9B3A3A;
+}
+
+/* MOBILE SIZES (макет mobile) */
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+}
+
+h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+p {
+  font-size: 0.9375rem;
+}
+
+/* Footer text (mobile 13px) */
+.site-footer,
+.site-footer * {
+  font-size: 0.8125rem;
+}
+
+strong {
+  font-weight: 600;
+}
+
+/* -------- DESKTOP ≥ 1200px (значення з макету desktop) -------- */
+@media (min-width: 1200px) {
+  body {
+    font-size: 1.5rem;
+  }
+  h1 {
+    font-size: 4rem;
+  }
+  h2 {
+    font-size: 2.25rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+  }
+  p {
+    font-size: 1.5rem;
+  }
+  .site-footer,
+  .site-footer * {
+    font-size: 1.25rem;
+  }
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.site-footer {
+  flex-shrink: 0;
+}
+
+/* Common section helper */
+.section {
+  width: min(100% - 32px, 1120px);
+  margin-inline: auto;
+  padding-block: 1.5rem;
+}
+
+/* Visually hidden (for accessibility if needed) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Keyframes */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Animation utilities */
+.anim-fade-in {
+  animation: fade-in 0.4s ease-out both;
+}
+
+.anim-slide-up {
+  animation: slide-up 0.5s ease-out both;
+}
+
+/* Slight delay variants for cards/steps */
+.anim-delay-1 {
+  animation-delay: 0.1s;
+}
+
+.anim-delay-2 {
+  animation-delay: 0.2s;
+}
+
+.anim-delay-3 {
+  animation-delay: 0.3s;
+}
+
+/* Spacing utilities */
+.u-mb-8 {
+  margin-bottom: 0.5rem;
+}
+
+.u-mb-16 {
+  margin-bottom: 1rem;
+}
+
+.u-mb-24 {
+  margin-bottom: 1.5rem;
+}
+
+.u-mb-32 {
+  margin-bottom: 2rem;
+}
+
+.u-mt-16 {
+  margin-top: 1rem;
+}
+
+.u-mt-24 {
+  margin-top: 1.5rem;
+}
+
+/* Visibility */
+.u-hidden {
+  display: none !important;
+}
+
+.u-show-md {
+  display: none;
+}
+@media (min-width: 768px) {
+  .u-show-md {
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .u-only-mobile {
+    display: none !important;
+  }
+}
+
+@media print {
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  body {
+    background: #ffffff;
+    color: #4A1E1E;
+  }
+  .site-header,
+  .site-footer,
+  .hero-cta {
+    display: none !important;
+  }
+  a {
+    text-decoration: underline;
+  }
+}
+.site-header {
+  background-color: #4A1E1E;
+  color: #F9F4E1;
+}
+
+/* MOBILE / TABLET */
+.header-inner {
+  width: min(100% - 32px, 1120px);
+  margin-inline: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding-block: 0.625rem;
+}
+
+.logo {
+  font-family: "Fugaz One", cursive;
+  letter-spacing: 0.08em;
+  font-size: 1.125rem;
+}
+
+/* Навігація */
+.main-nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.main-nav a {
+  font-size: 0.875rem;
+  transition: color 0.2s;
+}
+.main-nav a:hover, .main-nav a:focus-visible {
+  color: #D6C160;
+}
+
+/* Auth controls */
+.auth-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.auth-controls a {
+  padding: 0.375rem 0.75rem;
+  border-radius: 62.4375rem;
+  border: 1px solid transparent;
+  transition: background-color 0.2s, color 0.2s, transform 0.1s, box-shadow 0.1s;
+}
+
+/* Sign in – прозора кнопка, білий бордер */
+.auth-controls a:first-of-type {
+  background-color: transparent;
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Sign up – заповнена помаранчева */
+.auth-controls a:last-of-type {
+  background-color: #F26A2E;
+  color: #F9F4E1;
+  box-shadow: 0 3px 0 rgb(193.6, 84.8, 36.8);
+}
+
+.auth-controls a:hover {
+  transform: translateY(0.0625rem);
+  box-shadow: 0 2px 0 rgb(193.6, 84.8, 36.8);
+}
+
+.auth-controls a:last-of-type:active {
+  transform: translateY(0.1875rem);
+  box-shadow: none;
+}
+
+.user-greeting {
+  display: none;
+}
+
+/* -------- DESKTOP ≥ 1200px -------- */
+@media (min-width: 1200px) {
+  .header-inner {
+    height: 80px;
+    padding-block: 0;
+  }
+  .logo {
+    font-size: 1.625rem;
+  }
+  .main-nav a {
+    font-size: 1.25rem;
+  }
+  .auth-controls {
+    font-size: 1.125rem;
+    gap: 1rem;
+  }
+  .auth-controls a {
+    padding: 0.625rem 1.5rem;
+  }
+  .hero-text {
+    max-width: 30rem;
+  }
+  .hero-image {
+    max-width: 40.625rem;
+  }
+}
+.site-footer {
+  background-color: rgb(238.5, 228.7, 186.3);
+  padding-block: 0.75rem;
+  font-size: 0.8125rem;
+}
+
+.site-footer nav ul {
+  width: min(100% - 32px, 1120px);
+  margin-inline: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.site-footer a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+}
+
+/* Desktop – більше падінги, шрифт уже 20px із _typography */
+@media (min-width: 1200px) {
+  .site-footer {
+    padding-block: 1.125rem;
+  }
+}
+.btn, .hero-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1.25rem;
+  border-radius: 62.4375rem;
+  border: 1px solid transparent;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s, box-shadow 0.1s;
+}
+
+.btn--primary, .hero-cta {
+  background-color: #F26A2E;
+  color: #F9F4E1;
+  box-shadow: 0 6px 0 rgb(193.6, 84.8, 36.8);
+}
+.btn--primary:hover, .hero-cta:hover {
+  transform: translateY(0.0625rem);
+  box-shadow: 0 4px 0 rgb(193.6, 84.8, 36.8);
+}
+.btn--primary:active, .hero-cta:active {
+  transform: translateY(0.1875rem);
+  box-shadow: none;
+}
+
+/* Застосування до існуючої кнопки hero */
+.hero-cta {
+  margin-top: 1.5rem;
+}
+
+/* Desktop – збільшити до розмірів макету (≈167x64) */
+@media (min-width: 1200px) {
+  .hero-cta {
+    font-size: 1.25rem;
+    padding: 0.875rem 1.5rem;
+  }
+}
+/* HERO */
+.hero {
+  width: min(100% - 32px, 1120px);
+  margin-inline: auto;
+  padding-block: 2rem;
+}
+
+/* Сітка для hero */
+.hero-layout {
+  display: grid;
+  grid-template-areas: "title" "image" "copy";
+  row-gap: 1rem;
+}
+
+/* Елементи hero */
+.hero__title {
+  grid-area: title;
+  color: #9B3A3A;
+}
+
+.hero__image {
+  grid-area: image;
+}
+.hero__image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hero__copy {
+  grid-area: copy;
+}
+.hero__copy p {
+  margin-top: 0.75rem;
+}
+.hero__copy p + p {
+  margin-top: 0.5rem;
+}
+
+/* HOW IT WORKS */
+.how-it-works {
+  width: min(100% - 32px, 1120px);
+  margin-inline: auto;
+  padding-block: 2rem 2.5rem;
+}
+
+.how-it-works h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.step {
+  background-color: #D6C160;
+  border-radius: 20px;
+  padding: 1.25rem 1.375rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  text-align: center;
+}
+
+.step h3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.step h3 span {
+  width: 1.625rem;
+  height: 1.625rem;
+  border-radius: 50%;
+  background-color: #9B3A3A;
+  color: #F9F4E1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+/* -------- TABLET ≥ 768 -------- */
+@media (min-width: 768px) {
+  .hero {
+    padding-block: 2.5rem;
+  }
+  /* 2 колонки: заголовок на 2 колонки, текст зліва, картинка справа */
+  .hero-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 27.5rem) minmax(0, 1fr);
+    column-gap: 2.5rem;
+    grid-template-areas: "title title" "copy  image";
+    align-items: center;
+  }
+  .hero__title {
+    grid-area: title;
+    /* даємо максимум, щоб текст міг «заїхати» над картинку */
+    max-width: 60rem;
+  }
+  .hero__copy {
+    grid-area: copy;
+    max-width: 27.5rem;
+  }
+  .hero__image {
+    grid-area: image;
+    justify-self: center;
+    max-width: 38.75rem;
+  }
+  .hero__image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .how-it-works h2 {
+    margin-bottom: 1.75rem;
+  }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+/* -------- DESKTOP ≥ 1200 -------- */
+@media (min-width: 1200px) {
+  .hero-layout {
+    display: grid;
+    grid-template-columns: 28.125rem 1fr;
+    /* 🔥 ВИПРАВЛЕННЯ ВІДСТУПУ (GAP):
+       Ми явно кажемо: 
+       - 1-й рядок (заголовок) займає мінімальну можливу висоту (min-content).
+       - 2-й рядок (текст) теж займає тільки свій простір.
+       Картинка, яка розтягнута на обидва рядки, просто буде звисати вниз, не розсуваючи їх.
+    */
+    grid-template-rows: min-content min-content;
+    align-items: start;
+    position: relative;
+    isolation: isolate;
+  }
+  .hero__title {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    width: 40.1875rem;
+    max-width: none;
+    /* Зменш цей відступ, якщо треба підтягнути текст ще вище */
+    margin-bottom: 1.5rem;
+    z-index: 2;
+    position: relative;
+    /* Додай це, щоб кліки по тексту працювали, якщо картинка налізе зверху */
+    pointer-events: none;
+  }
+  /* Відновлюємо кліки для тексту всередині, якщо треба виділяти */
+  .hero__title span, .hero__title strong {
+    pointer-events: auto;
+  }
+  .hero__image {
+    grid-column: 2/3;
+    /* Картинка займає всі рядки починаючи з першого */
+    grid-row: 1/-1;
+    width: 53.125rem;
+    max-width: none;
+    z-index: 1;
+    position: relative;
+    /* 🔥 ВИПРАВЛЕННЯ ЗСУВУ КАРТИНКИ:
+       Замість margin-left використовуємо transform.
+       Це переміщує блок візуально, ігноруючи межі гріда.
+       -25% означає зсув вліво на чверть ширини картинки.
+       Можеш писати у пікселях: translate(rem(-250), 0)
+    */
+    transform: translate(-9.375rem, 0);
+    /* Важливо: прибираємо margin-left, щоб він не конфліктував */
+    margin-left: 0;
+  }
+  .hero__image img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .hero__copy {
+    grid-column: 1/2;
+    grid-row: 2/3; /* Чітко у другий рядок */
+    position: relative;
+    z-index: 2;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

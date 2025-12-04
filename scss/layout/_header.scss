@@ -1,0 +1,112 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use '../abstracts/functions' as *;
+
+.site-header {
+  background-color: $color-dark;
+  color: $color-text-light;
+}
+
+/* MOBILE / TABLET */
+
+.header-inner {
+  @include container;
+  @include flex-center(rem(16), space-between);
+  padding-block: rem(10);
+}
+
+.logo {
+  font-family: $font-heading;
+  letter-spacing: 0.08em;
+  font-size: rem(18);
+}
+
+/* Навігація */
+.main-nav ul {
+  @include flex-center(rem(20), center, center);
+}
+
+.main-nav a {
+  font-size: rem(14);
+  @include transition(color 0.2s);
+
+  &:hover,
+  &:focus-visible {
+    color: $color-secondary;
+  }
+}
+
+/* Auth controls */
+.auth-controls {
+  @include flex-center(rem(8));
+  font-size: rem(14);
+}
+
+.auth-controls a {
+  padding: rem(6) rem(12);
+  border-radius: rem(999);
+  border: 1px solid transparent;
+  @include transition(background-color 0.2s, color 0.2s, transform 0.1s, box-shadow 0.1s);
+}
+
+/* Sign in – прозора кнопка, білий бордер */
+.auth-controls a:first-of-type {
+  background-color: transparent;
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Sign up – заповнена помаранчева */
+.auth-controls a:last-of-type {
+  background-color: $color-accent;
+  color: $color-text-light;
+  box-shadow: 0 3px 0 mix-colors($color-accent, #000, 80%);
+}
+
+.auth-controls a:hover {
+  transform: translateY(rem(1));
+  box-shadow: 0 2px 0 mix-colors($color-accent, #000, 80%);
+}
+
+.auth-controls a:last-of-type:active {
+  transform: translateY(rem(3));
+  box-shadow: none;
+}
+
+.user-greeting {
+  display: none;
+}
+
+/* -------- DESKTOP ≥ 1200px -------- */
+
+@media (min-width: $bp-lg) {
+  .header-inner {
+    height: 80px;                // фіксована висота як у макеті
+    padding-block: 0;
+  }
+
+  .logo {
+    font-size: rem(26);          // більший логотип
+  }
+
+  .main-nav a {
+    font-size: rem(20);
+  }
+
+  .auth-controls {
+    font-size: rem(18);
+    gap: rem(16);
+  }
+
+  .auth-controls a {
+    padding: rem(10) rem(24);    // розмір ближче до 167x64
+  }
+
+  .hero-text {
+  max-width: rem(480); // або 460
+  }
+
+  .hero-image {
+  max-width: rem(650); // або 680
+  }
+
+}

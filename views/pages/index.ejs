@@ -8,33 +8,44 @@
 
     <main>
 	<section class="hero" aria-labelledby="hero-title">
-		<div class="hero-text">
-			<h1 id="hero-title" data-i18n="home.heroTitle">
+		<div class="hero-layout">
+			<h1
+				id="hero-title"
+				class="hero__title"
+				data-i18n="home.heroTitle"
+			>
 				Discover and create unique AI-recipes
 			</h1>
 
-			<p data-i18n="home.heroDescription">
-				Enter your ingredients and get an instant, chef-level recipe — either from our curated dish library or crafted by artificial intelligence.
-			</p>
+			<div class="hero__image">
+        		<picture>
+          			<source srcset="/img/hero-desktop.png" media="(max-width: 600px)">
+          			<img
+            			src="/img/hero-desktop.png"
+            			alt="Plate of pasta with chicken, broccoli and tomatoes"
+            			data-i18n="home.heroImageAlt"
+          			>
+        		</picture>
+      		</div>
 
-			<p data-i18n="home.heroHighlight">
-				<strong>Simple, fast, and delicious.</strong>
-			</p>
+			<div class="hero__copy">
+				<p data-i18n="home.heroDescription">
+					Enter your ingredients and get an instant, chef-level recipe —
+					either from our curated dish library or crafted by artificial intelligence.
+				</p>
 
-			<a href="/recipes" class="hero-cta" data-i18n="home.getStartedButton">
-				Get Started
-			</a>
-		</div>
+				<p data-i18n="home.heroHighlight">
+					<strong>Simple, fast, and delicious.</strong>
+				</p>
 
-		<div class="hero-image">
-			<picture>
-				<source srcset="/img/hero-mobile.png" media="(max-width: 600px)">
-				<img
-					src="/img/hero-desktop.png"
-					alt="Plate of pasta with chicken, broccoli and tomatoes"
-					data-i18n="home.heroImageAlt"
+				<a
+					href="/recipes"
+					class="hero-cta"
+					data-i18n="home.getStartedButton"
 				>
-			</picture>
+					Get Started
+				</a>
+			</div>
 		</div>
 	</section>
 

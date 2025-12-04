@@ -1,0 +1,224 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use '../abstracts/functions' as *;
+
+/* HERO */
+
+.hero {
+	@include container;
+	padding-block: rem(32);
+}
+
+/* Сітка для hero */
+.hero-layout {
+	display: grid;
+	grid-template-areas:
+		"title"
+		"image"
+		"copy";
+	row-gap: rem(16);
+}
+
+/* Елементи hero */
+.hero__title {
+	grid-area: title;
+	color: $color-primary;
+}
+
+.hero__image {
+	grid-area: image;
+
+	img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+}
+
+.hero__copy {
+	grid-area: copy;
+
+	p {
+		margin-top: rem(12);
+	}
+
+	p + p {
+		margin-top: rem(8);
+	}
+}
+
+/* HOW IT WORKS */
+
+.how-it-works {
+	@include container;
+	padding-block: rem(32) rem(40);
+}
+
+.how-it-works h2 {
+	text-align: center;
+	margin-bottom: rem(24);
+}
+
+.steps {
+	display: flex;
+	flex-direction: column;
+	gap: rem(16);
+}
+
+.step {
+	background-color: $color-secondary;
+	border-radius: $radius-lg;
+	padding: rem(20) rem(22);
+	box-shadow: $shadow-soft;
+	text-align: center;
+}
+
+.step h3 {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: rem(8);
+	margin-bottom: rem(8);
+}
+
+.step h3 span {
+	width: rem(26);
+	height: rem(26);
+	border-radius: 50%;
+	background-color: $color-primary;
+	color: $color-text-light;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-size: rem(16);
+}
+
+/* -------- TABLET ≥ 768 -------- */
+
+@media (min-width: $bp-md) {
+	.hero {
+		padding-block: rem(40);
+	}
+
+	/* 2 колонки: заголовок на 2 колонки, текст зліва, картинка справа */
+	.hero-layout {
+		display: grid;
+		grid-template-columns: minmax(0, rem(440)) minmax(0, 1fr);
+		column-gap: rem(40);
+		grid-template-areas:
+			"title title"
+			"copy  image";
+		align-items: center;
+	}
+
+	.hero__title {
+		grid-area: title;
+		/* даємо максимум, щоб текст міг «заїхати» над картинку */
+		max-width: rem(960);
+	}
+
+	.hero__copy {
+		grid-area: copy;
+		max-width: rem(440); // текст+кнопка тримаються лівої колонки
+	}
+
+	.hero__image {
+		grid-area: image;
+		justify-self: center;
+		max-width: rem(620);
+
+		img {
+			width: 100%;
+			height: auto;
+			display: block;
+		}
+	}
+
+	.how-it-works h2 {
+		margin-bottom: rem(28);
+	}
+
+	.steps {
+		@include grid(3, rem(24));
+	}
+}
+
+/* -------- DESKTOP ≥ 1200 -------- */
+@media (min-width: $bp-lg) {
+
+    .hero-layout {
+        display: grid;
+        grid-template-columns: rem(450) 1fr;
+        
+        /* 🔥 ВИПРАВЛЕННЯ ВІДСТУПУ (GAP):
+           Ми явно кажемо: 
+           - 1-й рядок (заголовок) займає мінімальну можливу висоту (min-content).
+           - 2-й рядок (текст) теж займає тільки свій простір.
+           Картинка, яка розтягнута на обидва рядки, просто буде звисати вниз, не розсуваючи їх.
+        */
+        grid-template-rows: min-content min-content; 
+        
+        align-items: start; 
+        position: relative;
+        isolation: isolate; 
+    }
+
+    .hero__title {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+        
+        width: rem(643);
+        max-width: none; 
+        
+        /* Зменш цей відступ, якщо треба підтягнути текст ще вище */
+        margin-bottom: rem(24); 
+        
+        z-index: 2; 
+        position: relative;
+        
+        /* Додай це, щоб кліки по тексту працювали, якщо картинка налізе зверху */
+        pointer-events: none; 
+    }
+    
+    /* Відновлюємо кліки для тексту всередині, якщо треба виділяти */
+    .hero__title span, .hero__title strong { pointer-events: auto; }
+
+
+    .hero__image {
+        grid-column: 2 / 3;
+        /* Картинка займає всі рядки починаючи з першого */
+        grid-row: 1 / -1; 
+        
+        width: rem(850); 
+        max-width: none;
+        
+        z-index: 1; 
+        position: relative;
+
+        /* 🔥 ВИПРАВЛЕННЯ ЗСУВУ КАРТИНКИ:
+           Замість margin-left використовуємо transform.
+           Це переміщує блок візуально, ігноруючи межі гріда.
+           -25% означає зсув вліво на чверть ширини картинки.
+           Можеш писати у пікселях: translate(rem(-250), 0)
+        */
+        transform: translate(rem(-150), 0);
+        
+        /* Важливо: прибираємо margin-left, щоб він не конфліктував */
+        margin-left: 0;
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .hero__copy {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3; /* Чітко у другий рядок */
+        position: relative;
+        z-index: 2;
+    }
+}
+
+

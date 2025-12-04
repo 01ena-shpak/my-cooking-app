@@ -3,14 +3,14 @@ const path = require('path');
 
 const app = express();
 
-// Налаштування EJS
+// налаштування EJS
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Підключення статичних файлів
+// підключення статичних файлів
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Маршрути
+// маршрути
 app.get('/', (req, res) => {
   res.render('pages/index');
 });
@@ -32,7 +32,7 @@ app.get('/registration', (req, res) => {
   res.render('pages/registration', { mode });
 });
 
-// Запуск сервера
+// запуск сервера
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);

@@ -1,0 +1,61 @@
+@use 'variables' as *;
+@use 'functions' as *;
+
+// Basic container
+@mixin container {
+  width: min(100% - $container-padding-x * 2, $container-max-width);
+  margin-inline: auto;
+}
+
+// Flex helper
+@mixin flex-center($gap: 0, $justify: center, $align: center) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+// Simple grid
+@mixin grid($cols, $gap) {
+  display: grid;
+  grid-template-columns: repeat($cols, 1fr);
+  gap: $gap;
+}
+
+// Typography heading
+@mixin heading($size, $weight: 700) {
+  font-size: rem($size);
+  font-weight: $weight;
+  line-height: 1.2;
+}
+
+// Transition system
+// новий універсальний варіант
+@mixin transition($args...) {
+  transition: $args;
+}
+
+// Responsive image wrapper (if needed)
+@mixin responsive-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+$grid-columns: 12;
+$grid-gutter: rem(24);
+
+@mixin grid-container {
+  @include container;
+}
+
+@mixin grid-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-inline: -($grid-gutter / 2);
+}
+
+@mixin grid-col($span) {
+  padding-inline: $grid-gutter / 2;
+  width: percentage($span / $grid-columns);
+}

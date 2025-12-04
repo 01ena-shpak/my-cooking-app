@@ -1,0 +1,23 @@
+@use '../abstracts/variables' as *;
+
+@media print {
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  body {
+    background: #ffffff;
+    color: $color-dark;
+  }
+
+  .site-header,
+  .site-footer,
+  .hero-cta {
+    display: none !important;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+}
