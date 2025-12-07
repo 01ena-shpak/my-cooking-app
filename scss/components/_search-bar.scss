@@ -5,25 +5,25 @@
 
 .recipes-search-form {
   display: flex;
-  flex-wrap: wrap; // Дозволяємо перенесення (але керуємо ним нижче)
+  flex-wrap: wrap; 
+  // 🔥 Aligns items vertically in the center (prevents vertical stretching)
+  align-items: center; 
   justify-content: center;
-  align-items: center;
-  gap: rem(8); // Зменшимо відступ, щоб більше влізло на мобайлі
+  gap: rem(8); 
   
   width: 100%;
   max-width: rem(900);
   margin-inline: auto;
 
-  // --- ІНПУТ ---
+  // --- INPUT ---
   input[type="search"] {
-    // 🔥 ГОЛОВНЕ ВИПРАВЛЕННЯ:
-    flex-grow: 1;    // Займає весь доступний простір
-    flex-shrink: 1;  // Дозволяємо стискатися
-    min-width: 0;    // Критично важливо: дозволяє інпуту ставати меншим за контент
-    width: auto;     // Скидаємо фіксовану ширину
+    flex-grow: 1;    
+    flex-shrink: 1;  
+    min-width: 0; 
+    width: auto; 
     
     padding: rem(12) rem(16);
-    padding-left: rem(40); // Трохи менший відступ під іконку
+    padding-left: rem(40); 
     
     font-family: $font-main;
     font-size: rem(16);
@@ -31,7 +31,11 @@
     border: 1px solid #8B3A3A;
     border-radius: rem(12);
     outline: none;
+    
+    // 🔥 Explicit height to match buttons
     height: rem(48);
+    // 🔥 Box-sizing ensures padding doesn't add to height
+    box-sizing: border-box; 
     
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238B3A3A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
@@ -44,57 +48,72 @@
     }
   }
 
-  // --- КНОПКА SEARCH ---
+  // --- SEARCH BUTTON ---
   button[type="submit"] {
     @extend .btn--primary;
     
-    // 🔥 НЕ ДАЄМО КНОПЦІ ПАДАТИ:
-    flex-shrink: 0; // Забороняємо кнопці стискатися
+    // 🔥 Prevents the button from expanding to fill empty space
+    flex-grow: 0; 
+    // 🔥 Prevents the button from shrinking if space is tight
+    flex-shrink: 0; 
     
+    // 🔥 Explicit height to match input
     height: rem(48);
-    padding-inline: rem(24); // Трохи компактніше на мобайлі
     
-    // На дуже малих екранах можна зменшити текст кнопки
+    // 🔥 Resets width to content size
+    width: auto; 
+    
+    padding-inline: rem(24);
+    
+    // Ensures text is centered
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
     @media (max-width: 360px) {
        padding-inline: rem(16);
        font-size: rem(14);
     }
   }
 
-  // --- ФІЛЬТРИ ---
+  // --- FILTERS ---
   .recipes-filters {
     display: flex;
     justify-content: center;
+    align-items: center; // Vertical alignment
     flex-wrap: wrap;
     gap: rem(8);
     
-    // 🔥 ПРИМУСОВИЙ ПЕРЕНОС ФІЛЬТРІВ ВНИЗ (НА МОБАЙЛІ):
-    // Оскільки flex-wrap у батька увімкнено, ми даємо фільтрам 100% ширини.
-    // Це змушує їх зайняти новий рядок, а Інпут+Кнопка лишаються на верхньому.
+    // Mobile behavior: Force new line
     width: 100%; 
     margin-top: rem(8);
     order: 3; 
 
     button {
       @extend .btn--filter;
+      
+      // 🔥 Match height with search bar
+      height: rem(48);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 }
 
-// --- DESKTOP ВЕРСІЯ ---
+// --- DESKTOP VERSION ---
 @media (min-width: $bp-lg) {
   .recipes-search-form {
-    flex-wrap: nowrap; // 🔥 В рядок на десктопі
+    flex-wrap: nowrap; // Everything in one line
     gap: rem(16);
 
     .recipes-filters {
-      width: auto;   // Вже не 100%, а скільки треба контенту
-      margin-top: 0; // Прибираємо відступ
-      order: 0;      // Повертаємо нормальний порядок
+      width: auto;   // Content width
+      margin-top: 0; // Remove top margin
+      order: 0;      // Reset order
     }
     
     input[type="search"] {
-       // На десктопі можна дати мінімальну ширину для краси
        min-width: rem(250); 
     }
   }

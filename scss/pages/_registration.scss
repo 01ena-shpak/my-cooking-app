@@ -1,0 +1,174 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use '../abstracts/functions' as *;
+@use '../components/button';
+
+/* =========================================
+   AUTH SECTION (Split Screen Layout)
+   ========================================= */
+
+.auth-section {
+  width: 100%;
+  // На десктопі секція займає мінімум висоту екрану
+  min-height: 100vh; 
+  display: flex;
+  flex-direction: column;
+  background-color: $color-bg; // Основний фон сторінки під формою
+  overflow-x: hidden;
+  padding: 0; // Прибираємо паддінги, щоб картинка торкалась країв
+}
+
+.auth-layout {
+  display: flex;
+  flex-direction: column; // Mobile: вертикально
+  width: 100%;
+  flex-grow: 1; 
+
+  @media (min-width: $bp-lg) {
+    flex-direction: row; // Desktop: горизонтально
+    // Важливо: щоб картинка і форма були однакової висоти (на весь екран)
+    height: 100vh; 
+    min-height: rem(700); // Мінімальна висота для зручності
+  }
+}
+
+/* --- ЛІВА КОЛОНКА (ФОРМА) --- */
+
+.auth-content {
+  width: 100%;
+  // Відступи на мобільному
+  padding: rem(40) rem(24);
+  
+  display: flex;
+  justify-content: center;
+  align-items: center; // Центруємо картку по вертикалі
+
+  @media (min-width: $bp-lg) {
+    // Ширина лівої частини
+    width: 50%; 
+    flex-shrink: 0;
+    padding: rem(40);
+  }
+}
+
+// 🔥 КАРТКА З ГІРЧИЧНИМ ФОНОМ
+.auth-card {
+  width: 100%;
+  max-width: rem(420); // Трохи вужча для акуратності
+  
+  // 🔥 Гірчичний колір із прозорістю 70%
+  background-color: rgba($color-secondary, 0.7);
+  
+  border-radius: $radius-lg; // Скруглення (rem(20))
+  padding: rem(32) rem(24);
+  box-shadow: $shadow-soft;
+  text-align: center;
+
+  @media (min-width: $bp-lg) {
+    padding: rem(48) rem(40);
+  }
+
+  h1 {
+    font-family: $font-heading;
+    color: $color-primary;
+    // Розмір як у H2
+    font-size: rem(28); 
+    line-height: 1.1;
+    margin-bottom: rem(32);
+
+    @media (min-width: $bp-lg) {
+      font-size: rem(36);
+    }
+  }
+}
+
+/* --- ПРАВА КОЛОНКА (КАРТИНКА) --- */
+
+.auth-image {
+  width: 100%;
+  // На мобільному картинка зверху або знизу, висота фіксована
+  height: rem(250); 
+  position: relative;
+  overflow: hidden;
+
+  picture, img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    // Картинка заповнює весь блок
+    object-fit: cover; 
+    object-position: center;
+  }
+
+  @media (min-width: $bp-lg) {
+    // Ширина правої частини (решта місця)
+    width: 50%; 
+    height: 100%; // На всю висоту батька
+    flex-grow: 1; 
+  }
+}
+
+/* --- FORM ELEMENTS (Стандартні) --- */
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-family: $font-main;
+  font-size: rem(14);
+  color: $color-dark; 
+  font-weight: 600;
+  margin-bottom: rem(8);
+  padding-left: rem(4);
+}
+
+input {
+  width: 100%;
+  padding: rem(12) rem(16);
+  margin-bottom: rem(20);
+  
+  // Фон інпуту світліший (білий з прозорістю або просто білий)
+  background-color: rgba(255, 255, 255, 0.9); 
+  border: 2px solid rgba($color-primary, 0.2); 
+  border-radius: $radius-md; 
+  
+  font-family: $font-main;
+  font-size: rem(16); 
+  color: $color-text-main;
+  outline: none;
+  transition: border-color 0.2s;
+
+  &::placeholder { color: rgba($color-text-main, 0.5); }
+  
+  &:focus {
+    border-color: $color-accent; 
+    background-color: #fff;
+  }
+}
+
+button[type="submit"] {
+  @extend .btn--primary; 
+  width: 100%; 
+  margin-top: rem(12);
+  margin-bottom: rem(24);
+  padding: rem(14) rem(24);
+  font-size: rem(18);
+}
+
+.auth-switch {
+  text-align: center;
+  font-size: rem(15); 
+  color: $color-dark;
+
+  a {
+    font-weight: 700;
+    color: $color-primary;
+    text-decoration: underline;
+    margin-left: rem(4);
+    &:hover { color: $color-accent; text-decoration: none; }
+  }
+}

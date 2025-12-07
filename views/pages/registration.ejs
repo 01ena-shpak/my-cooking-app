@@ -1,121 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<%- include('../partials/head') %>
+    <%- include('../partials/head') %>
 </head>
 <body>
-	<%- include('../partials/header') %>
+    <%- include('../partials/header') %>
 
-	<main>
-	<section class="auth-section" aria-labelledby="auth-title">
-		<div class="auth-layout">
+    <main>
+    <section class="auth-section" aria-labelledby="auth-title">
+        <div class="auth-layout">
 
-			<aside class="auth-illustration auth-illustration--left" aria-hidden="true">
-				<picture>
-					<source srcset="/img/reg-left-mobile.png" media="(max-width: 600px)">
-					<img src="/img/reg-left-desktop.png" alt="">
-				</picture>
-			</aside>
+            <div class="auth-content">
+                <div class="auth-card"> <h1 id="auth-title" data-i18n="auth.title">
+                        Log in or create an account
+                    </h1>
 
-			<div class="auth-content">
-				<h1 id="auth-title" data-i18n="auth.title">
-					Log in or create an account
-				</h1>
+                    <% if (mode === 'signup') { %>
+                        <form action="#" method="post" class="auth-form" aria-describedby="signup-description">
+                            <p id="signup-description" class="visually-hidden" data-i18n="auth.signupDescription">
+                                Create a new account using your email and password.
+                            </p>
+                            <label for="signup-email" data-i18n="auth.emailLabel">Email</label>
+                            <input id="signup-email" name="email" type="email" required autocomplete="email">
+                            
+                            <label for="signup-password" data-i18n="auth.passwordLabel">Password</label>
+                            <input id="signup-password" name="password" type="password" required autocomplete="new-password">
+                            
+                            <label for="signup-confirm" data-i18n="auth.confirmPasswordLabel">Confirm password</label>
+                            <input id="signup-confirm" name="confirmPassword" type="password" required autocomplete="new-password">
 
-				<% if (mode === 'signup') { %>
-					<!-- SIGN UP FORM -->
-					<article class="auth-card" aria-label="Create an account">
-						<form action="#" method="post" class="auth-form" aria-describedby="signup-description">
-							<p id="signup-description" class="visually-hidden" data-i18n="auth.signupDescription">
-								Create a new account using your email and password.
-							</p>
+                            <button type="submit" data-i18n="auth.signUpButton">Sign up</button>
 
-							<label for="signup-email" data-i18n="auth.emailLabel">Email</label>
-							<input
-								id="signup-email"
-								name="email"
-								type="email"
-								required
-								autocomplete="email"
-							>
+                            <p class="auth-switch">
+                                <span data-i18n="auth.alreadyHaveAccount">Already have an account?</span>
+                                <a href="/registration?mode=signin" data-i18n="auth.signInLink">Sign in</a>
+                            </p>
+                        </form>
+                    <% } else { %>
+                        <form action="#" method="post" class="auth-form" aria-describedby="signin-description">
+                             <p id="signin-description" class="visually-hidden" data-i18n="auth.signinDescription">
+                                Log in to your existing account using your email and password.
+                            </p>
+                            <label for="signin-email" data-i18n="auth.emailLabel">Email</label>
+                            <input id="signin-email" name="email" type="email" required autocomplete="email">
+                            
+                            <label for="signin-password" data-i18n="auth.passwordLabel">Password</label>
+                            <input id="signin-password" name="password" type="password" required autocomplete="current-password">
 
-							<label for="signup-password" data-i18n="auth.passwordLabel">Password</label>
-							<input
-								id="signup-password"
-								name="password"
-								type="password"
-								required
-								autocomplete="new-password"
-							>
+                            <button type="submit" data-i18n="auth.signInButton">Sign in</button>
 
-							<label for="signup-confirm" data-i18n="auth.confirmPasswordLabel">Confirm password</label>
-							<input
-								id="signup-confirm"
-								name="confirmPassword"
-								type="password"
-								required
-								autocomplete="new-password"
-							>
+                            <p class="auth-switch">
+                                <span data-i18n="auth.noAccountYet">Don’t have an account?</span>
+                                <a href="/registration?mode=signup" data-i18n="auth.signUpLink">Sign up</a>
+                            </p>
+                        </form>
+                    <% } %>
+                </div>
+            </div>
 
-							<button type="submit" data-i18n="auth.signUpButton">Sign up</button>
+            <div class="auth-image" aria-hidden="true">
+                <picture>
+                    <img 
+                        src="/img/auth-dish.png" 
+                        alt="Cozy kitchen cooking atmosphere" 
+                        loading="lazy"
+                    >
+                </picture>
+            </div>
 
-							<p class="auth-switch">
-								<span data-i18n="auth.alreadyHaveAccount">Already have an account?</span>
-								<a href="/registration?mode=signin" data-i18n="auth.signInLink">Sign in</a>
-							</p>
-						</form>
-					</article>
-
-				<% } else { %>
-
-					<!-- SIGN IN FORM -->
-					<article class="auth-card" aria-label="Log in to existing account">
-						<form action="#" method="post" class="auth-form" aria-describedby="signin-description">
-							<p id="signin-description" class="visually-hidden" data-i18n="auth.signinDescription">
-								Log in to your existing account using your email and password.
-							</p>
-
-							<label for="signin-email" data-i18n="auth.emailLabel">Email</label>
-							<input
-								id="signin-email"
-								name="email"
-								type="email"
-								required
-								autocomplete="email"
-							>
-
-							<label for="signin-password" data-i18n="auth.passwordLabel">Password</label>
-							<input
-								id="signin-password"
-								name="password"
-								type="password"
-								required
-								autocomplete="current-password"
-							>
-
-							<button type="submit" data-i18n="auth.signInButton">Sign in</button>
-
-							<p class="auth-switch">
-								<span data-i18n="auth.noAccountYet">Don’t have an account?</span>
-								<a href="/registration?mode=signup" data-i18n="auth.signUpLink">Sign up</a>
-							</p>
-						</form>
-					</article>
-
-				<% } %>
-			</div>
-
-			<aside class="auth-illustration auth-illustration--right" aria-hidden="true">
-				<picture>
-					<source srcset="/img/reg-right-mobile.png" media="(max-width: 600px)">
-					<img src="/img/reg-right-desktop.png" alt="">
-				</picture>
-			</aside>
-
-		</div>
-	</section>
+        </div>
+    </section>
 </main>
 
-	<%- include('../partials/footer') %>
+    <%- include('../partials/footer') %>
 </body>
 </html>

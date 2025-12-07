@@ -386,7 +386,7 @@ main {
     font-size: 1rem;
   }
 }
-.btn, .btn--outline, .btn--filter, .recipes-search-form .recipes-filters button, .btn--primary, .recipe-favorite-button, .recipe-back__link, .hero-cta, .recipe-card__button, .recipes-search-form button[type=submit] {
+.btn, .btn--outline, .btn--filter, .recipes-search-form .recipes-filters button, .btn--primary, button[type=submit], .recipe-favorite-button, .recipe-back__link, .hero-cta, .recipe-card__button, .recipes-search-form button[type=submit] {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -401,26 +401,26 @@ main {
   white-space: nowrap;
   transition: background-color 0.2s, color 0.2s, transform 0.1s, box-shadow 0.1s, border-color 0.2s;
 }
-.btn:active, .btn--outline:active, .btn--filter:active, .recipes-search-form .recipes-filters button:active, .btn--primary:active, .recipe-favorite-button:active, .recipe-back__link:active, .hero-cta:active, .recipe-card__button:active, .recipes-search-form button[type=submit]:active {
+.btn:active, .btn--outline:active, .btn--filter:active, .recipes-search-form .recipes-filters button:active, .btn--primary:active, button[type=submit]:active, .recipe-favorite-button:active, .recipe-back__link:active, .hero-cta:active, .recipe-card__button:active {
   transform: translateY(0.125rem);
   box-shadow: none !important;
 }
 
-.btn--primary, .recipe-favorite-button, .recipe-back__link, .hero-cta, .recipe-card__button, .recipes-search-form button[type=submit] {
+.btn--primary, button[type=submit], .recipe-favorite-button, .recipe-back__link, .hero-cta, .recipe-card__button, .recipes-search-form button[type=submit] {
   background-color: #F26A2E;
   color: #fff;
   box-shadow: 0 4px 0 rgb(193.6, 84.8, 36.8);
 }
-.btn--primary:hover, .recipe-favorite-button:hover, .recipe-back__link:hover, .hero-cta:hover, .recipe-card__button:hover, .recipes-search-form button[type=submit]:hover {
+.btn--primary:hover, button[type=submit]:hover, .recipe-favorite-button:hover, .recipe-back__link:hover, .hero-cta:hover, .recipe-card__button:hover {
   background-color: rgb(243.4932432432, 123.1148648649, 70.0067567568);
   transform: translateY(-0.0625rem);
   box-shadow: 0 5px 0 rgb(193.6, 84.8, 36.8);
 }
-.btn--primary:active, .recipe-favorite-button:active, .recipe-back__link:active, .hero-cta:active, .recipe-card__button:active, .recipes-search-form button[type=submit]:active {
+.btn--primary:active, button[type=submit]:active, .recipe-favorite-button:active, .recipe-back__link:active, .hero-cta:active, .recipe-card__button:active {
   transform: translateY(0.0625rem);
   box-shadow: none;
 }
-.btn--primary, .recipe-favorite-button, .recipe-back__link, .hero-cta, .recipe-card__button, .recipes-search-form button[type=submit] {
+.btn--primary, button[type=submit], .recipe-favorite-button, .recipe-back__link, .hero-cta, .recipe-card__button, .recipes-search-form button[type=submit] {
   padding: 0.625rem 1.75rem;
 }
 
@@ -458,8 +458,8 @@ main {
 .recipes-search-form {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   width: 100%;
   max-width: 56.25rem;
@@ -479,6 +479,7 @@ main {
   border-radius: 0.75rem;
   outline: none;
   height: 3rem;
+  box-sizing: border-box;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238B3A3A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: 0.75rem center;
@@ -489,9 +490,14 @@ main {
   box-shadow: 0 0 0 3px rgba(155, 58, 58, 0.1);
 }
 .recipes-search-form button[type=submit] {
+  flex-grow: 0;
   flex-shrink: 0;
   height: 3rem;
+  width: auto;
   padding-inline: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 @media (max-width: 360px) {
   .recipes-search-form button[type=submit] {
@@ -502,12 +508,20 @@ main {
 .recipes-search-form .recipes-filters {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   gap: 0.5rem;
   width: 100%;
   margin-top: 0.5rem;
   order: 3;
 }
+.recipes-search-form .recipes-filters button {
+  height: 3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @media (min-width: 1200px) {
   .recipes-search-form {
     flex-wrap: nowrap;
@@ -1264,6 +1278,160 @@ main {
     font-size: 1.25rem;
     padding: 0.875rem 2.25rem;
   }
+}
+
+/* =========================================
+   AUTH SECTION (Split Screen Layout)
+   ========================================= */
+.auth-section {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #F9F4E1;
+  overflow-x: hidden;
+  padding: 0;
+}
+
+.auth-layout {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex-grow: 1;
+}
+@media (min-width: 1200px) {
+  .auth-layout {
+    flex-direction: row;
+    height: 100vh;
+    min-height: 43.75rem;
+  }
+}
+
+/* --- ЛІВА КОЛОНКА (ФОРМА) --- */
+.auth-content {
+  width: 100%;
+  padding: 2.5rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (min-width: 1200px) {
+  .auth-content {
+    width: 50%;
+    flex-shrink: 0;
+    padding: 2.5rem;
+  }
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 26.25rem;
+  background-color: rgba(214, 193, 96, 0.7);
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  text-align: center;
+}
+@media (min-width: 1200px) {
+  .auth-card {
+    padding: 3rem 2.5rem;
+  }
+}
+.auth-card h1 {
+  font-family: "Fugaz One", cursive;
+  color: #9B3A3A;
+  font-size: 1.75rem;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+}
+@media (min-width: 1200px) {
+  .auth-card h1 {
+    font-size: 2.25rem;
+  }
+}
+
+/* --- ПРАВА КОЛОНКА (КАРТИНКА) --- */
+.auth-image {
+  width: 100%;
+  height: 15.625rem;
+  position: relative;
+  overflow: hidden;
+}
+.auth-image picture, .auth-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+@media (min-width: 1200px) {
+  .auth-image {
+    width: 50%;
+    height: 100%;
+    flex-grow: 1;
+  }
+}
+
+/* --- FORM ELEMENTS (Стандартні) --- */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-family: "Work Sans", sans-serif;
+  font-size: 0.875rem;
+  color: #4A1E1E;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  padding-left: 0.25rem;
+}
+
+input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 2px solid rgba(155, 58, 58, 0.2);
+  border-radius: 12px;
+  font-family: "Work Sans", sans-serif;
+  font-size: 1rem;
+  color: #4A1E1E;
+  outline: none;
+  transition: border-color 0.2s;
+}
+input::placeholder {
+  color: rgba(74, 30, 30, 0.5);
+}
+input:focus {
+  border-color: #F26A2E;
+  background-color: #fff;
+}
+
+button[type=submit] {
+  width: 100%;
+  margin-top: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding: 0.875rem 1.5rem;
+  font-size: 1.125rem;
+}
+
+.auth-switch {
+  text-align: center;
+  font-size: 0.9375rem;
+  color: #4A1E1E;
+}
+.auth-switch a {
+  font-weight: 700;
+  color: #9B3A3A;
+  text-decoration: underline;
+  margin-left: 0.25rem;
+}
+.auth-switch a:hover {
+  color: #F26A2E;
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=main.css.map */
