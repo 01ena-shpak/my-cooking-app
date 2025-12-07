@@ -36,14 +36,14 @@
 						content="PT25M"
 						data-i18n="recipe.time"
 					>
-						⏱ 25 min
+						25 min
 					</span>
 					<span
 						class="recipe-meta__calories"
 						itemprop="calories"
 						data-i18n="recipe.calories"
 					>
-						🔥 520 kcal
+						520 kcal
 					</span>
 				</div>
 
@@ -52,7 +52,7 @@
 					class="recipe-favorite-button"
 					data-i18n="recipe.saveToFavorites"
 				>
-					♡ Save to Favorites
+					Save to Favorites
 				</button>
 			</div>
 		</section>
@@ -111,10 +111,15 @@
 			</article>
 		</section>
 
-		<section class="recipe-back" aria-label="Back to recipes list">
-			<a href="/recipes" class="recipe-back__link" data-i18n="recipe.backToRecipes">
-				Back to Recipes
-			</a>
+		<section class="recipe-back" aria-label="Back to previous page">
+    		<a 
+       			href="/recipes" 
+       			class="recipe-back__link" 
+       			onclick="history.back(); return false;"
+       			data-i18n="recipe.backToRecipes"
+    		>
+       			Back to Recipes
+    		</a>
 		</section>
 	</main>
 

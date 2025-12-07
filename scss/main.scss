@@ -15,8 +15,14 @@
 @use 'layout/header';
 @use 'layout/footer';
 
+
 // COMPONENTS
 @use 'components/button';
+@use 'components/search-bar'; // Новий файл
+@use 'components/card';       // Новий файл
 
 // PAGES
 @use 'pages/home';
+@use 'pages/recipes'; 
+@use 'pages/favorites';
+@use 'pages/recipe';

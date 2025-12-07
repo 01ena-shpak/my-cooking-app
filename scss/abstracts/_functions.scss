@@ -1,11 +1,13 @@
 @use 'variables' as *;
+@use "sass:math";
+@use "sass:color";
 
 // px - rem
 @function rem($px, $base: 16) {
-  @return ($px / $base) * 1rem;
+  @return math.div($px, $base) * 1rem;
 }
 
 // color mix wrapper
 @function mix-colors($c1, $c2, $weight: 50%) {
-  @return mix($c1, $c2, $weight);
+  @return color.mix($c1, $c2, $weight);
 }

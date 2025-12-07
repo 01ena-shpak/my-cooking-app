@@ -1,0 +1,84 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use '../abstracts/functions' as *;
+
+// --- Секція заголовка та пошуку ---
+.favorites-search {
+  @include container;
+  text-align: center;
+  padding-block: rem(40) rem(20);
+
+  h1 {
+    // Використовуємо Fugaz One, як на макеті
+    @include heading(36);
+    color: $color-primary; // Темно-червоний
+    margin-bottom: rem(24);
+
+    @media (min-width: $bp-lg) {
+      @include heading(48);
+    }
+  }
+}
+
+// --- Секція результатів ---
+.favorites-results {
+  @include container;
+  padding-bottom: rem(60);
+}
+
+// 🔥 ГРІД ДЛЯ КАРТОК (Аналогічно до Recipes)
+.favorites-grid {
+  // 1. Вмикаємо Flex-row через наш кастомний міксін
+  @include row;
+  
+  // 2. Додаємо відступ між рядами карток
+  row-gap: rem(24);
+  
+  // Скидання списку, якщо раптом це ul
+  padding: 0;
+  list-style: none;
+}
+
+// Адаптивність карток всередині гріда
+// Ми звертаємось до карток, що лежать безпосередньо в гріді
+.favorites-grid > .recipe-card {
+  // Mobile: 1 картка на всю ширину (12 колонок)
+  @include col(12);
+
+  // Tablet: 2 картки в ряд (6 колонок)
+  @include col(6, $bp-md);
+
+  // Desktop: 3 картки в ряд (4 колонки) — як на скріншоті
+  @include col(4, $bp-lg);
+  
+  // Додатковий відступ знизу для мобільної версії, 
+  // хоча row-gap зазвичай справляється, для надійності можна залишити
+  margin-bottom: rem(24);
+  
+  @media (min-width: $bp-md) {
+    margin-bottom: 0;
+  }
+}
+
+// --- Блок "Порожньо" (Empty State) ---
+.favorites-empty {
+  @include container;
+  text-align: center;
+  padding-block: rem(60);
+  max-width: rem(500);
+  margin-inline: auto;
+
+  // Ховаємо, поки немає класу .is-visible (логіка JS)
+  display: none; 
+
+  p {
+    font-size: rem(18);
+    color: rgba($color-text-main, 0.7);
+    line-height: 1.6;
+  }
+  
+  // Якщо треба показати
+  &.is-visible {
+    display: block;
+  }
+}

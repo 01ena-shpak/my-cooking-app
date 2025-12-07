@@ -1,0 +1,109 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use '../abstracts/functions' as *;
+@use 'button';
+
+.recipe-card {
+  display: flex;
+  flex-direction: column;
+  background-color: $color-secondary; // Гірчичний/Жовтий фон
+  border-radius: $radius-lg;
+  padding: rem(24);
+  height: 100%; // Щоб картки були однакової висоти в ряду
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  border: 1px solid rgba(0,0,0,0.05);
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow-soft;
+  }
+}
+
+// Зображення (Кругле)
+.recipe-card__image-link {
+  display: block;
+  width: 100%;
+  max-width: rem(220); // Обмеження розміру кола
+  aspect-ratio: 1 / 1; // Робить блок квадратним
+  margin-inline: auto; // Центруємо
+  margin-bottom: rem(20);
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.05);
+  }
+}
+
+.recipe-card__title {
+  // Використовуємо міксін заголовка, але менший розмір
+  font-family: $font-heading;
+  font-size: rem(20);
+  line-height: 1.2;
+  color: $color-text-main;
+  margin-bottom: rem(16);
+  flex-grow: 1; // Розтягує заголовок, притискаючи кнопку до низу
+}
+
+// Мета-дані (Час та Калорії)
+.recipe-card__meta {
+  @include flex-center(rem(16), center, center);
+  margin-bottom: rem(24);
+  color: rgba($color-text-main, 0.8);
+  font-weight: 600;
+  font-size: rem(14);
+}
+
+// Спільні стилі для іконок
+%card-icon {
+  content: '';
+  display: inline-block;
+  width: rem(18);
+  height: rem(18);
+  background-color: currentColor; // Бере колір тексту
+  margin-right: rem(6);
+  vertical-align: middle;
+  // Важливо: це дозволяє міняти колір SVG
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+}
+
+.recipe-card__time {
+  display: inline-flex;
+  align-items: center;
+
+  // Іконка Годинника (SVG Data URI)
+  &::before {
+    @extend %card-icon;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpolyline points='12 6 12 12 16 14'/%3E%3C/svg%3E");
+  }
+}
+
+.recipe-card__calories {
+  display: inline-flex;
+  align-items: center;
+
+  // Іконка Вогню (SVG Data URI)
+  &::before {
+    @extend %card-icon;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.1.2-2.2.5-3z'/%3E%3C/svg%3E");
+  }
+}
+
+.recipe-card__button {
+  @extend .btn--primary; // Беремо стилі з _button.scss
+  
+  display: flex; // Важливо для вирівнювання
+  width: 100%;   // Розтягуємо на всю ширину картки
+  margin-top: auto; // Притискаємо до низу
+}

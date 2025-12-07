@@ -1,0 +1,258 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use '../abstracts/functions' as *;
+@use '../components/button';
+
+/* =========================================
+   1. HERO SECTION
+   ========================================= */
+.recipe-hero {
+  @include container;
+  padding-block: rem(40);
+
+  // Вмикаємо грід
+  @include row;
+  
+  // 🔥 ВАЖЛИВО: Центруємо колонки всередині контейнера
+  justify-content: center; 
+  align-items: center; 
+}
+
+// --- КОЛОНКА З КАРТИНКОЮ ---
+.recipe-hero__image {
+  @include col(12);
+  @include col(6, $bp-lg);
+
+  // Центруємо картинку всередині колонки
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+
+  margin-bottom: rem(32);
+  @media (min-width: $bp-lg) { margin-bottom: 0; }
+
+  img {
+    display: block;
+    height: auto;
+    
+    // 🔥 ВИПРАВЛЕННЯ РОЗМИТОСТІ:
+    // Не розтягуємо картинку насильно на 100%, якщо вона менша.
+    // Замість width: 100% ставимо max-width.
+    max-width: 100%; 
+    
+    // Якщо картинка все одно мала, можна обмежити її розмір пікселями, 
+    // щоб вона була чіткою (наприклад, реальний розмір картинки 500px)
+    // width: rem(500); 
+    
+    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.15)); 
+  }
+}
+
+// --- КОЛОНКА З ТЕКСТОМ (ПРАВА) ---
+.recipe-hero__info {
+  @include col(12);
+  @include col(6, $bp-lg);
+
+  // 🔥 ВИПРАВЛЕННЯ ВИРІВНЮВАННЯ:
+  // Робимо цю колонку флекс-контейнером, щоб центрувати все всередині неї
+  display: flex;
+  flex-direction: column;
+  align-items: center; // Центрування по горизонталі (Title, Time, Button)
+  text-align: center;  // Центрування тексту
+  
+  // Додаємо відступ зліва на десктопі, щоб не липло до картинки
+  @media (min-width: $bp-lg) {
+    padding-left: rem(40); 
+    // Якщо хочете, щоб на десктопі текст був зліва, змініть на align-items: flex-start;
+    // Але ви просили по центру, тому залишаємо center.
+    align-items: center; 
+    text-align: center;
+  }
+}
+
+#recipe-title {
+  font-family: $font-heading;
+  color: $color-primary;
+  line-height: 1.1;
+  margin-bottom: rem(20);
+  font-size: rem(36); 
+  
+  @media (min-width: $bp-lg) { font-size: rem(56); }
+}
+
+.recipe-hero__meta {
+  display: flex;
+  align-items: center;
+  justify-content: center; // Центруємо іконки
+  gap: rem(24);
+  margin-bottom: rem(32);
+  
+  font-family: $font-main;
+  font-weight: 600;
+  font-size: rem(18);
+  color: #4A1E1E;
+}
+
+// Іконки
+%icon-base {
+  content: '';
+  display: inline-block;
+  width: rem(22);
+  height: rem(22);
+  background-color: $color-accent; 
+  margin-right: rem(8);
+  vertical-align: text-bottom;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+}
+
+.recipe-meta__time::before {
+  @extend %icon-base;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' /%3E%3C/svg%3E");
+}
+
+.recipe-meta__calories::before {
+  @extend %icon-base;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z' /%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z' /%3E%3C/svg%3E");
+}
+
+.recipe-favorite-button {
+  @extend .btn--primary;
+  display: inline-flex;
+  align-items: center;
+  gap: rem(10);
+  font-size: rem(18);
+  padding: rem(12) rem(32);
+
+  &::before {
+    content: '';
+    display: block;
+    width: rem(20);
+    height: rem(20);
+    background-color: currentColor; 
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z' /%3E%3C/svg%3E");
+  }
+}
+
+
+/* =========================================
+   2. КОНТЕНТ (Інгредієнти та Інструкції)
+   ========================================= */
+.recipe-content {
+  @include container;
+  padding-bottom: rem(80);
+  
+  @include row;
+  justify-content: center; // Центруємо колонки
+  align-items: start;
+  row-gap: rem(32);
+}
+
+// --- БЛОК ІНГРЕДІЄНТІВ ---
+.recipe-ingredients {
+  @include col(12);
+  @include col(4, $bp-lg);
+
+  background-color: #F3EAD0; 
+  color: #4A1E1E; 
+  border-radius: $radius-lg;
+  padding: rem(32);
+
+  h2 {
+    font-family: $font-heading;
+    font-size: rem(28);
+    color: #4A1E1E;
+    margin-bottom: rem(20);
+    text-align: left;
+  }
+
+  p {
+    font-family: $font-main;
+    font-weight: 700;
+    margin-bottom: rem(16);
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    font-family: $font-main;
+    font-size: rem(16);
+    line-height: 1.6;
+    margin-bottom: rem(12);
+    position: relative;
+    padding-left: rem(20);
+
+    &::before {
+      content: '•';
+      color: $color-primary;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      top: rem(2);
+    }
+  }
+}
+
+// --- БЛОК ІНСТРУКЦІЙ ---
+.recipe-instructions {
+  @include col(12);
+  @include col(8, $bp-lg);
+
+  background-color: #E3D081; 
+  color: #4A1E1E;
+  border-radius: $radius-lg;
+  padding: rem(32);
+
+  h2 {
+    font-family: $font-heading;
+    font-size: rem(28);
+    color: #4A1E1E;
+    margin-bottom: rem(24);
+    text-align: left;
+  }
+
+  ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    font-family: $font-main;
+    font-size: rem(16);
+    line-height: 1.6;
+    margin-bottom: rem(28);
+    
+    strong {
+      display: block;
+      color: #4A1E1E;
+      font-weight: 700;
+      font-size: rem(20);
+      margin-bottom: rem(8);
+    }
+  }
+}
+
+/* =========================================
+   3. КНОПКА "НАЗАД"
+   ========================================= */
+.recipe-back {
+  @include container;
+  text-align: center;
+  padding-bottom: rem(80);
+
+  .recipe-back__link {
+    @extend .btn--primary;
+    padding: rem(14) rem(48);
+    font-size: rem(18);
+    text-decoration: none;
+    cursor: pointer;
+  }
+}

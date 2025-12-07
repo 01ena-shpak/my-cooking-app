@@ -1,13 +1,14 @@
+@use "sass:math";
 @use 'variables' as *;
 @use 'functions' as *;
 
-// Basic container
+// --- ІСНУЮЧІ МІКСІНИ ---
+
 @mixin container {
   width: min(100% - $container-padding-x * 2, $container-max-width);
   margin-inline: auto;
 }
 
-// Flex helper
 @mixin flex-center($gap: 0, $justify: center, $align: center) {
   display: flex;
   justify-content: $justify;
@@ -15,47 +16,52 @@
   gap: $gap;
 }
 
-// Simple grid
-@mixin grid($cols, $gap) {
-  display: grid;
-  grid-template-columns: repeat($cols, 1fr);
-  gap: $gap;
-}
-
-// Typography heading
 @mixin heading($size, $weight: 700) {
   font-size: rem($size);
   font-weight: $weight;
   line-height: 1.2;
 }
 
-// Transition system
-// новий універсальний варіант
 @mixin transition($args...) {
   transition: $args;
 }
 
-// Responsive image wrapper (if needed)
 @mixin responsive-img {
   display: block;
   width: 100%;
   height: auto;
 }
 
-$grid-columns: 12;
-$grid-gutter: rem(24);
+// --- 🔥 ВИПРАВЛЕНИЙ ГРІД (MARGIN-BASED) ---
+// Цей варіант використовує calc(), щоб картки з фоном не злипалися
 
-@mixin grid-container {
-  @include container;
-}
-
-@mixin grid-row {
+@mixin row($gap: $grid-gutter) {
   display: flex;
   flex-wrap: wrap;
-  margin-inline: -($grid-gutter / 2);
+  flex-direction: row; 
+  
+  // Компенсуємо зовнішні відступи колонок
+  margin-inline: math.div($gap, -2);
 }
 
-@mixin grid-col($span) {
-  padding-inline: $grid-gutter / 2;
-  width: percentage($span / $grid-columns);
+@mixin col($span, $bp: null) {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  
+  // 🔥 ВИПРАВЛЕННЯ ЗЛИПАННЯ:
+  // Використовуємо margin (прозорий відступ) замість padding
+  margin-inline: math.div($grid-gutter, 2);
+  
+  // Формула: (Ширина у %) - (Розмір відступу)
+  // Наприклад: 33.33% - 24px. Це залишає місце для margin.
+  $percent: math.percentage(math.div($span, $grid-columns));
+  $width: calc(#{$percent} - #{$grid-gutter});
+
+  @if $bp {
+    @media (min-width: $bp) {
+      width: $width;
+    }
+  } @else {
+    width: $width;
+  }
 }

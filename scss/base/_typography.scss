@@ -42,11 +42,6 @@ p {
   font-size: rem(15);   // Body mobile = 15px
 }
 
-/* Footer text (mobile 13px) */
-.site-footer,
-.site-footer * {
-	font-size: rem(13);
-}
 
 strong {
   font-weight: 600;
@@ -73,10 +68,5 @@ strong {
 
   p {
     font-size: rem(24);    // загальний body-text
-  }
-
-  .site-footer,
-  .site-footer * {
-	font-size: rem(20);    // Footer desktop = 20px
   }
 }

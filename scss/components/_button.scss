@@ -1,47 +1,82 @@
+@use "sass:color"; // <--- 1. ОБОВ'ЯЗКОВО ДОДАЙ ЦЕЙ РЯДОК
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
 @use '../abstracts/functions' as *;
 
+// --- БАЗОВА КНОПКА ---
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: rem(10) rem(20);
   border-radius: rem(999);
   border: 1px solid transparent;
-  font-weight: 600;
+  font-family: $font-main;
+  font-weight: 700;
   font-size: rem(15);
+  line-height: 1.2;
   cursor: pointer;
-  @include transition(background-color 0.2s, transform 0.1s, box-shadow 0.1s);
-}
-
-.btn--primary {
-  background-color: $color-accent;
-  color: $color-text-light;
-  box-shadow: 0 6px 0 mix-colors($color-accent, #000, 80%);
-
-  &:hover {
-    transform: translateY(rem(1));
-    box-shadow: 0 4px 0 mix-colors($color-accent, #000, 80%);
-  }
+  text-decoration: none;
+  white-space: nowrap;
+  
+  @include transition(background-color 0.2s, color 0.2s, transform 0.1s, box-shadow 0.1s, border-color 0.2s);
 
   &:active {
-    transform: translateY(rem(3));
+    transform: translateY(rem(2));
+    box-shadow: none !important;
+  }
+}
+
+// Міксін для генерації кольорів
+@mixin btn-variant($bg, $text: #fff) {
+  background-color: $bg;
+  color: $text;
+  
+  $shadow-color: mix-colors($bg, #000, 80%);
+  box-shadow: 0 4px 0 $shadow-color;
+
+  &:hover {
+    // 2. ЗАМІНА LIGHTEN НА COLOR.ADJUST
+    // Це робить колір світлішим на 5%
+    background-color: color.adjust($bg, $lightness: 5%);
+    
+    transform: translateY(rem(-1));
+    box-shadow: 0 5px 0 $shadow-color;
+  }
+  
+  &:active {
+    transform: translateY(rem(1));
     box-shadow: none;
   }
 }
 
-/* Застосування до існуючої кнопки hero */
-.hero-cta {
+// --- ВАРІАНТИ ---
+
+// 1. Primary (Помаранчева)
+.btn--primary {
   @extend .btn;
-  @extend .btn--primary;
-  margin-top: rem(24);
+  @include btn-variant($color-accent, #fff);
+  padding: rem(10) rem(28);
 }
 
-/* Desktop – збільшити до розмірів макету (≈167x64) */
-@media (min-width: $bp-lg) {
-  .hero-cta {
-    font-size: rem(20);
-    padding: rem(14) rem(24);
+// 2. Filter (Жовта)
+.btn--filter {
+  @extend .btn;
+  @include btn-variant(#DCC665, $color-text-main); 
+  padding: rem(8) rem(20);
+  font-size: rem(14);
+}
+
+// 3. Outline (Прозора)
+.btn--outline {
+  @extend .btn;
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: none;
+  padding: rem(10) rem(24);
+
+  &:hover {
+    border-color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
   }
 }
