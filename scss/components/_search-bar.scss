@@ -1,42 +1,39 @@
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
 @use '../abstracts/functions' as *;
-@use 'button'; 
+@use 'button';
 
 .recipes-search-form {
   display: flex;
-  flex-wrap: wrap; 
-  // 🔥 Aligns items vertically in the center (prevents vertical stretching)
-  align-items: center; 
+  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
-  gap: rem(8); 
-  
+  gap: rem(8);
+
   width: 100%;
   max-width: rem(900);
   margin-inline: auto;
 
   // --- INPUT ---
   input[type="search"] {
-    flex-grow: 1;    
-    flex-shrink: 1;  
-    min-width: 0; 
-    width: auto; 
-    
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 0;
+    width: auto;
+
     padding: rem(12) rem(16);
-    padding-left: rem(40); 
-    
+    padding-left: rem(40);
+
     font-family: $font-main;
     font-size: rem(16);
     background-color: #FDFBF0;
     border: 1px solid #8B3A3A;
     border-radius: rem(12);
     outline: none;
-    
-    // 🔥 Explicit height to match buttons
+
     height: rem(48);
-    // 🔥 Box-sizing ensures padding doesn't add to height
-    box-sizing: border-box; 
-    
+    box-sizing: border-box;
+
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238B3A3A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: rem(12) center;
@@ -51,48 +48,40 @@
   // --- SEARCH BUTTON ---
   button[type="submit"] {
     @extend .btn--primary;
-    
-    // 🔥 Prevents the button from expanding to fill empty space
-    flex-grow: 0; 
-    // 🔥 Prevents the button from shrinking if space is tight
-    flex-shrink: 0; 
-    
-    // 🔥 Explicit height to match input
+
+    flex-grow: 0;
+    flex-shrink: 0;
+
     height: rem(48);
-    
-    // 🔥 Resets width to content size
-    width: auto; 
-    
+    width: auto;
+
     padding-inline: rem(24);
-    
-    // Ensures text is centered
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
 
     @media (max-width: 360px) {
-       padding-inline: rem(16);
-       font-size: rem(14);
+      padding-inline: rem(16);
+      font-size: rem(14);
     }
   }
 
   // --- FILTERS ---
   .recipes-filters {
     display: flex;
-    justify-content: center;
-    align-items: center; // Vertical alignment
+    align-items: center;
     flex-wrap: wrap;
     gap: rem(8);
-    
-    // Mobile behavior: Force new line
-    width: 100%; 
+
+    width: 100%;
     margin-top: rem(8);
-    order: 3; 
+    order: 3;
+
+    justify-content: center;
 
     button {
       @extend .btn--filter;
-      
-      // 🔥 Match height with search bar
       height: rem(48);
       display: inline-flex;
       align-items: center;
@@ -104,17 +93,17 @@
 // --- DESKTOP VERSION ---
 @media (min-width: $bp-lg) {
   .recipes-search-form {
-    flex-wrap: nowrap; // Everything in one line
+    flex-wrap: nowrap;
     gap: rem(16);
 
     .recipes-filters {
-      width: auto;   // Content width
-      margin-top: 0; // Remove top margin
-      order: 0;      // Reset order
+      width: auto;
+      margin-top: 0;
+      order: 0;
     }
-    
+
     input[type="search"] {
-       min-width: rem(250); 
+      min-width: rem(250);
     }
   }
 }

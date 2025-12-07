@@ -422,25 +422,26 @@ main {
 }
 .btn--primary, button[type=submit], .recipe-favorite-button, .recipe-back__link, .hero-cta, .recipe-card__button, .recipes-search-form button[type=submit] {
   padding: 0.625rem 1.75rem;
+  font-size: 0.9375rem;
 }
 
 .btn--filter, .recipes-search-form .recipes-filters button {
-  background-color: #DCC665;
+  background-color: #D6C160;
   color: #4A1E1E;
-  box-shadow: 0 4px 0 rgb(176, 158.4, 80.8);
+  box-shadow: 0 4px 0 rgb(171.2, 154.4, 76.8);
 }
 .btn--filter:hover, .recipes-search-form .recipes-filters button:hover {
-  background-color: rgb(224.7222222222, 205.6904761905, 121.7777777778);
+  background-color: rgb(219.2275, 200.905, 116.2725);
   transform: translateY(-0.0625rem);
-  box-shadow: 0 5px 0 rgb(176, 158.4, 80.8);
+  box-shadow: 0 5px 0 rgb(171.2, 154.4, 76.8);
 }
 .btn--filter:active, .recipes-search-form .recipes-filters button:active {
   transform: translateY(0.0625rem);
   box-shadow: none;
 }
 .btn--filter, .recipes-search-form .recipes-filters button {
-  padding: 0.5rem 1.25rem;
-  font-size: 0.875rem;
+  padding: 0.625rem 1.75rem;
+  font-size: 0.9375rem;
 }
 
 .btn--outline {
@@ -507,13 +508,13 @@ main {
 }
 .recipes-search-form .recipes-filters {
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 0.5rem;
   width: 100%;
   margin-top: 0.5rem;
   order: 3;
+  justify-content: center;
 }
 .recipes-search-form .recipes-filters button {
   height: 3rem;
@@ -1073,9 +1074,6 @@ main {
 .recipe-back {
   width: min(100% - 32px, 1120px);
   margin-inline: auto;
-  margin-inline: auto;
-  padding-inline: 1.25rem;
-  width: 100%;
 }
 
 /* =========================================
@@ -1213,7 +1211,7 @@ main {
 }
 
 .recipe-ingredients {
-  background-color: #F3EAD0;
+  background-color: rgba(214, 193, 96, 0.6);
   width: 100%;
 }
 @media (min-width: 1200px) {
@@ -1233,14 +1231,14 @@ main {
 }
 .recipe-ingredients li::before {
   content: "•";
-  color: #8B3A3A;
+  color: #9B3A3A;
   position: absolute;
   left: 0;
   font-weight: bold;
 }
 
 .recipe-instructions {
-  background-color: #E3D081;
+  background-color: #D6C160;
   width: 100%;
 }
 @media (min-width: 1200px) {
