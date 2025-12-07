@@ -5,7 +5,7 @@
 .site-footer {
   background-color: mix-colors($color-bg, $color-secondary, 70%);
   padding-block: rem(12);
-  font-size: rem(13); // mobile значення, desktop задаємо в _typography
+  font-size: rem(13); 
 }
 
 .site-footer nav ul {
@@ -20,7 +20,6 @@
   text-decoration-thickness: 1px;
 }
 
-/* Desktop – більше падінги, шрифт уже 20px із _typography */
 @media (min-width: $bp-lg) {
   .site-footer {
     padding-block: rem(18);

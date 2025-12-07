@@ -2,8 +2,6 @@
 @use 'variables' as *;
 @use 'functions' as *;
 
-// --- ІСНУЮЧІ МІКСІНИ ---
-
 @mixin container {
   width: min(100% - $container-padding-x * 2, $container-max-width);
   margin-inline: auto;
@@ -26,21 +24,11 @@
   transition: $args;
 }
 
-@mixin responsive-img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-// --- 🔥 ВИПРАВЛЕНИЙ ГРІД (MARGIN-BASED) ---
-// Цей варіант використовує calc(), щоб картки з фоном не злипалися
-
 @mixin row($gap: $grid-gutter) {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row; 
   
-  // Компенсуємо зовнішні відступи колонок
   margin-inline: math.div($gap, -2);
 }
 
@@ -48,12 +36,8 @@
   box-sizing: border-box;
   flex: 0 0 auto;
   
-  // 🔥 ВИПРАВЛЕННЯ ЗЛИПАННЯ:
-  // Використовуємо margin (прозорий відступ) замість padding
   margin-inline: math.div($grid-gutter, 2);
   
-  // Формула: (Ширина у %) - (Розмір відступу)
-  // Наприклад: 33.33% - 24px. Це залишає місце для margin.
   $percent: math.percentage(math.div($span, $grid-columns));
   $width: calc(#{$percent} - #{$grid-gutter});
 

@@ -6,10 +6,10 @@
 .recipe-card {
   display: flex;
   flex-direction: column;
-  background-color: $color-secondary; // Гірчичний/Жовтий фон
+  background-color: $color-secondary;
   border-radius: $radius-lg;
   padding: rem(24);
-  height: 100%; // Щоб картки були однакової висоти в ряду
+  height: 100%; 
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
   border: 1px solid rgba(0,0,0,0.05);
@@ -20,13 +20,13 @@
   }
 }
 
-// Зображення (Кругле)
+// зображення (кругле)
 .recipe-card__image-link {
   display: block;
   width: 100%;
-  max-width: rem(220); // Обмеження розміру кола
-  aspect-ratio: 1 / 1; // Робить блок квадратним
-  margin-inline: auto; // Центруємо
+  max-width: rem(220); 
+  aspect-ratio: 1 / 1; 
+  margin-inline: auto; 
   margin-bottom: rem(20);
   border-radius: 50%;
   overflow: hidden;
@@ -45,16 +45,14 @@
 }
 
 .recipe-card__title {
-  // Використовуємо міксін заголовка, але менший розмір
   font-family: $font-heading;
   font-size: rem(20);
   line-height: 1.2;
   color: $color-text-main;
   margin-bottom: rem(16);
-  flex-grow: 1; // Розтягує заголовок, притискаючи кнопку до низу
+  flex-grow: 1;
 }
 
-// Мета-дані (Час та Калорії)
 .recipe-card__meta {
   @include flex-center(rem(16), center, center);
   margin-bottom: rem(24);
@@ -63,16 +61,14 @@
   font-size: rem(14);
 }
 
-// Спільні стилі для іконок
 %card-icon {
   content: '';
   display: inline-block;
   width: rem(18);
   height: rem(18);
-  background-color: currentColor; // Бере колір тексту
+  background-color: currentColor; 
   margin-right: rem(6);
   vertical-align: middle;
-  // Важливо: це дозволяє міняти колір SVG
   mask-size: contain;
   mask-repeat: no-repeat;
   mask-position: center;
@@ -101,9 +97,9 @@
 }
 
 .recipe-card__button {
-  @extend .btn--primary; // Беремо стилі з _button.scss
+  @extend .btn--primary;
   
-  display: flex; // Важливо для вирівнювання
-  width: 100%;   // Розтягуємо на всю ширину картки
-  margin-top: auto; // Притискаємо до низу
+  display: flex;
+  width: 100%;
+  margin-top: auto;
 }

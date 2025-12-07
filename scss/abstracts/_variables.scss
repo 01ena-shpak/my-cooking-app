@@ -9,10 +9,9 @@ $color-text-main: $color-dark;
 $color-text-light: $color-bg;
 
 // TYPOGRAPHY
-$font-main: 'Work Sans', sans-serif;    // Основний текст
-$font-heading: 'Fugaz One', cursive;    // Заголовки
+$font-main: 'Work Sans', sans-serif;    // основний текст
+$font-heading: 'Fugaz One', cursive;    // заголовки
 
-// Розміри
 $font-size-base: 16px;
 
 // LAYOUT
@@ -28,4 +27,4 @@ $radius-md: 12px;
 $shadow-soft: 0 8px 20px rgba(0, 0, 0, 0.18);
 
 $grid-columns: 12;
-$grid-gutter: 24px; // Це розмір відступу між картками!
+$grid-gutter: 24px;

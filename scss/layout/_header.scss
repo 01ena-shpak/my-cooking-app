@@ -1,13 +1,12 @@
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
 @use '../abstracts/functions' as *;
+@use '../components/button';
 
 .site-header {
   background-color: $color-dark;
   color: $color-text-light;
 }
-
-/* MOBILE / TABLET */
 
 .header-inner {
   @include container;
@@ -21,7 +20,6 @@
   font-size: rem(18);
 }
 
-/* Навігація */
 .main-nav ul {
   @include flex-center(rem(20), center, center);
 }
@@ -36,7 +34,6 @@
   }
 }
 
-/* Auth controls */
 .auth-controls {
   @include flex-center(rem(8));
   font-size: rem(14);
@@ -49,13 +46,11 @@
   @include transition(background-color 0.2s, color 0.2s, transform 0.1s, box-shadow 0.1s);
 }
 
-/* Sign in – прозора кнопка, білий бордер */
 .auth-controls a:first-of-type {
   background-color: transparent;
   border-color: rgba(255, 255, 255, 0.7);
 }
 
-/* Sign up – заповнена помаранчева */
 .auth-controls a:last-of-type {
   background-color: $color-accent;
   color: $color-text-light;
@@ -76,16 +71,15 @@
   display: none;
 }
 
-/* -------- DESKTOP ≥ 1200px -------- */
 
 @media (min-width: $bp-lg) {
   .header-inner {
-    height: 80px;                // фіксована висота як у макеті
+    height: 80px;                
     padding-block: 0;
   }
 
   .logo {
-    font-size: rem(26);          // більший логотип
+    font-size: rem(26);          
   }
 
   .main-nav a {
@@ -98,15 +92,15 @@
   }
 
   .auth-controls a {
-    padding: rem(10) rem(24);    // розмір ближче до 167x64
+    padding: rem(10) rem(24);    
   }
 
   .hero-text {
-  max-width: rem(480); // або 460
+  max-width: rem(480); 
   }
 
   .hero-image {
-  max-width: rem(650); // або 680
+  max-width: rem(650); 
   }
 
 }

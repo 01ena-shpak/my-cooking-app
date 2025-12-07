@@ -7,7 +7,6 @@
   @return math.div($px, $base) * 1rem;
 }
 
-// color mix wrapper
 @function mix-colors($c1, $c2, $weight: 50%) {
   @return color.mix($c1, $c2, $weight);
 }

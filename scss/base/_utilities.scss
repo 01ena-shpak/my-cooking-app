@@ -1,34 +1,6 @@
 @use '../abstracts/functions' as *;
 @use '../abstracts/variables' as *;
 
-/* Spacing utilities */
-.u-mb-8  { margin-bottom: rem(8); }
-.u-mb-16 { margin-bottom: rem(16); }
-.u-mb-24 { margin-bottom: rem(24); }
-.u-mb-32 { margin-bottom: rem(32); }
-
-.u-mt-16 { margin-top: rem(16); }
-.u-mt-24 { margin-top: rem(24); }
-
-/* Visibility */
-.u-hidden {
-  display: none !important;
-}
-
-.u-show-md {
-  display: none;
-
-  @media (min-width: $bp-md) {
-    display: block;
-  }
-}
-
-.u-only-mobile {
-  @media (min-width: $bp-md) {
-    display: none !important;
-  }
-}
-
 .visually-hidden {
   position: absolute;
   width: 1px;

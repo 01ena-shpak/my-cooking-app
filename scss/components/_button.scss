@@ -1,9 +1,9 @@
-@use "sass:color"; // <--- 1. ОБОВ'ЯЗКОВО ДОДАЙ ЦЕЙ РЯДОК
+@use "sass:color";
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
 @use '../abstracts/functions' as *;
 
-// --- БАЗОВА КНОПКА ---
+// базова кнопка
 .btn {
   display: inline-flex;
   align-items: center;
@@ -35,8 +35,6 @@
   box-shadow: 0 4px 0 $shadow-color;
 
   &:hover {
-    // 2. ЗАМІНА LIGHTEN НА COLOR.ADJUST
-    // Це робить колір світлішим на 5%
     background-color: color.adjust($bg, $lightness: 5%);
     
     transform: translateY(rem(-1));
@@ -49,9 +47,7 @@
   }
 }
 
-// --- ВАРІАНТИ ---
-
-// 1. Primary (Помаранчева)
+// 1. Primary 
 .btn--primary {
   @extend .btn;
   @include btn-variant($color-accent, #fff);
@@ -59,7 +55,7 @@
   font-size: rem(15);
 }
 
-// 2. Filter (Жовта)
+// 2. Filter 
 .btn--filter {
   @extend .btn;
   @include btn-variant($color-secondary, $color-text-main); 
@@ -68,7 +64,7 @@
   font-size: rem(15);
 }
 
-// 3. Outline (Прозора)
+// 3. Outline 
 .btn--outline {
   @extend .btn;
   background-color: transparent;
