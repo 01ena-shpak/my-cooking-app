@@ -16,19 +16,20 @@
 		</section>
 
 		<section class="favorites-results" aria-label="Favorite recipes">
-			<div class="favorites-grid">
-				<%- include('../partials/recipe-card') %>
-				<%- include('../partials/recipe-card') %>
-				<%- include('../partials/recipe-card') %>
-				<%- include('../partials/recipe-card') %>
-				<%- include('../partials/recipe-card') %>
+			<div class="favorites-grid js-favorites-list">
+				<!-- сюди JS вставлятиме картки улюблених -->
+				 <%- include('../partials/recipe-card') %>
 			</div>
+
+			<div class="favorites-pagination js-favorites-pagination">
+    			<!-- пагінація для favorites -->
+  			</div>
 		</section>
 
-		<section class="favorites-empty" aria-label="No favorite recipes yet">
-			<p data-i18n="favorites.emptyText">
-				You don’t have any saved recipes yet. Generate one or choose from the catalog.
-			</p>
+		<section class="favorites-empty visually-hidden" aria-label="No favorite recipes yet">
+  			<p data-i18n="favorites.emptyText">
+    			You don’t have any saved recipes yet. Generate one or choose from the catalog.
+  			</p>
 		</section>
 	</main>
 

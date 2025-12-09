@@ -8,8 +8,16 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
+<!-- 1. Бібліотека axios -->
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<!-- 2. Базовий HTTP-клієнт -->
 <script src="/js/api/http.js"></script>
+
+<!-- 3. Сервіси, які використовують window.http -->
 <script src="/js/services/UserService.js"></script>
-<script src="/js/auth.js"></script>
+<script src="/js/services/RecipeService.js"></script>
+
+<!-- 4. Скрипти з логікою UI (можуть бути з defer) -->
+<script src="/js/auth.js" defer></script>
 <script src="/js/header.js" defer></script>

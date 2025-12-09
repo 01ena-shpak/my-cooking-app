@@ -3,38 +3,45 @@
 	itemscope
 	itemtype="https://schema.org/Recipe"
 >
-	<a href="/recipe" class="recipe-card__image-link">
+	<a href="/recipe" class="recipe-card__image-link js-recipe-details-link">
 		<picture>
 			<source srcset="/img/rec-desktop.png" media="(max-width: 600px)">
 			<img
 				src="/img/rec-desktop.png"
 				alt="Cozy herb chicken pasta in a bowl"
 				itemprop="image"
+				class="js-recipe-image"
 			>
 		</picture>
 	</a>
 
-	<h2 class="recipe-card__title" itemprop="name" data-i18n="recipes.sampleName">
-		Cozy Herb Chicken Pasta
+	<h2
+		class="recipe-card__title js-recipe-title"
+		itemprop="name"
+	>
+		Sample recipe
 	</h2>
 
 	<div class="recipe-card__meta">
 		<span
-			class="recipe-card__time"
+			class="recipe-card__time js-recipe-time"
 			itemprop="totalTime"
 			content="PT25M"
 		>
 			25 min
 		</span>
-		<span class="recipe-card__calories" itemprop="calories">
+		<span class="recipe-card__calories js-recipe-calories" itemprop="calories">
 			520 kcal
 		</span>
 	</div>
 
+	<div class="recipe-card__difficulty js-recipe-difficulty">
+		Difficulty: easy
+	</div>
+
 	<a
 		href="/recipe"
-		class="recipe-card__button"
-		data-i18n="recipes.viewDetails"
+		class="recipe-card__button js-recipe-details-link"
 	>
 		View details
 	</a>

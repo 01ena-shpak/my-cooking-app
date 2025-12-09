@@ -61,6 +61,13 @@
   font-size: rem(14);
 }
 
+.recipe-card__difficulty {
+  margin-bottom: rem(16);
+  font-size: rem(14);        // такий самий, як у мета
+  font-weight: 600;
+  color: rgba($color-text-main, 0.9);
+}
+
 %card-icon {
   content: '';
   display: inline-block;

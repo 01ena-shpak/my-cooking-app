@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<%- include('../partials/head') %>
+	<script src="/js/pages/recipes-page.js" defer></script>
 </head>
 <body>
 	<%- include('../partials/header') %>
@@ -16,21 +17,21 @@
 		</section>
 
 		<section class="recipes-results" aria-label="Recipe results">
-			<div class="recipes-grid">
-				<%- include('../partials/recipe-card') %>
-				<%- include('../partials/recipe-card') %>
-				<%- include('../partials/recipe-card') %>
-				<%- include('../partials/recipe-card') %>
-				<%- include('../partials/recipe-card') %>
-				<%- include('../partials/recipe-card') %>
+			<div class="recipes-grid js-recipes-grid">
+				<!-- сюди JS вставлятиме картки рецептів -->
+				 <%- include('../partials/recipe-card') %>
 			</div>
+
+			<div class="recipes-pagination js-recipes-pagination">
+    			<!-- сюди JS вставить кнопки пагінації -->
+  			</div>
 		</section>
 
-		<section class="recipes-empty" aria-label="No recipes found">
-			<p data-i18n="recipes.emptyText">
-				No recipes found. Try using fewer filters or search by a different ingredient.
-				Our AI will keep learning from your choices.
-			</p>
+		<section class="recipes-empty visually-hidden" aria-label="No recipes found">
+  			<p data-i18n="recipes.emptyText">
+    			No recipes found. Try using fewer filters or search by a different ingredient.
+    			Our AI will keep learning from your choices.
+  			</p>
 		</section>
 	</main>
 

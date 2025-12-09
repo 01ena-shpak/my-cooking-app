@@ -24,14 +24,63 @@
 	</button>
 
 	<div class="recipes-filters" aria-label="Filter recipes">
-		<button type="button" data-i18n="recipes.filter.time">
-			Time
-		</button>
-		<button type="button" data-i18n="recipes.filter.calories">
-			Calories
-		</button>
-		<button type="button" data-i18n="recipes.filter.difficulty">
-			Difficulty ▾
-		</button>
+  		<button
+    		type="button"
+    		class="recipes-filter-btn js-filter-time"
+    		data-sort-field="time"
+    		data-i18n="recipes.filter.time"
+  		>
+    		Time
+  		</button>
+
+  		<button
+    		type="button"
+    		class="recipes-filter-btn js-filter-calories"
+    		data-sort-field="calories"
+    		data-i18n="recipes.filter.calories"
+  		>
+    		Calories
+  		</button>
+
+  		<div class="recipes-filter-dropdown js-difficulty-filter">
+    		<button
+      			type="button"
+      			class="recipes-filter-btn recipes-filter-btn--dropdown js-difficulty-trigger"
+      			data-i18n="recipes.filter.difficulty"
+    		>
+      			Difficulty ▾
+    		</button>
+
+    		<div class="recipes-filter-dropdown__menu js-difficulty-menu">
+      			<button
+        			type="button"
+        			class="recipes-filter-dropdown__item is-active"
+        			data-difficulty="all"
+      			>
+        			All
+      			</button>
+      			<button
+        			type="button"
+        			class="recipes-filter-dropdown__item"
+        			data-difficulty="easy"
+      			>
+        			Easy
+      			</button>
+      			<button
+        			type="button"
+        			class="recipes-filter-dropdown__item"
+        			data-difficulty="medium"
+      			>
+        			Medium
+      			</button>
+      			<button
+        			type="button"
+        			class="recipes-filter-dropdown__item"
+        			data-difficulty="hard"
+      			>
+        			Hard
+      			</button>
+    		</div>
+  		</div>
 	</div>
 </form>

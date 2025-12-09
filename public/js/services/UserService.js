@@ -1,96 +1,85 @@
 // public/js/services/UserService.js
-// User registration / login against json-server
 
-(function (global) {
-  if (!global.httpClient) {
-    console.error('httpClient is not defined. Make sure http.js is loaded before UserService.js');
-  }
+(function () {
+	class UserService {
+		constructor() {
+			this.currentUserKey = 'currentUser';
+		}
 
-  class UserService {
-    constructor(httpClient) {
-      this.http = httpClient;
-      this.storageKey = 'currentUser';
-    }
+		_getStoredUser() {
+			const raw = localStorage.getItem(this.currentUserKey);
+			if (!raw) return null;
+			try {
+				return JSON.parse(raw);
+			} catch {
+				return null;
+			}
+		}
 
-    // helper to read current user from localStorage
-    getCurrentUser() {
-      try {
-        const raw = localStorage.getItem(this.storageKey);
-        return raw ? JSON.parse(raw) : null;
-      } catch (e) {
-        console.error('Failed to parse current user from localStorage', e);
-        return null;
-      }
-    }
+		getCurrentUser() {
+			return this._getStoredUser();
+		}
 
-    setCurrentUser(user) {
-      localStorage.setItem(this.storageKey, JSON.stringify(user));
-    }
+		_setCurrentUser(user) {
+			localStorage.setItem(this.currentUserKey, JSON.stringify(user));
+		}
 
-    clearCurrentUser() {
-      localStorage.removeItem(this.storageKey);
-    }
+		async register({ email, password, confirmPassword }) {
+			if (!email || !password || !confirmPassword) {
+				throw new Error('All fields are required.');
+			}
+			if (password !== confirmPassword) {
+				throw new Error('Passwords do not match.');
+			}
 
-    // --- API methods ---
+			// Перевіряємо, чи немає такого користувача
+			const existingResp = await window.http.get('/users', {
+				params: { email }
+			});
+			const existingUsers = existingResp.data || [];
+			if (existingUsers.length > 0) {
+				throw new Error('User with this email already exists.');
+			}
 
-    async register({ email, password, confirmPassword }) {
-      // simple client-side validation
-      if (!email || !password || !confirmPassword) {
-        throw new Error('All fields are required.');
-      }
+			const newUser = {
+				email,
+				password
+			};
 
-      if (password !== confirmPassword) {
-        throw new Error('Passwords do not match.');
-      }
+			const createResp = await window.http.post('/users', newUser);
+			const created = createResp.data || createResp;
 
-      if (password.length < 6) {
-        throw new Error('Password must be at least 6 characters long.');
-      }
+			this._setCurrentUser(created);
+			return created;
+		}
 
-      // 1) check if user already exists
-      const existing = await this.http.get('/users', {
-        params: { email },
-        useCache: false
-      });
+		async login({ email, password }) {
+			if (!email || !password) {
+				throw new Error('Email and password are required.');
+			}
 
-      if (Array.isArray(existing) && existing.length > 0) {
-        throw new Error('User with this email already exists.');
-      }
+			const resp = await window.http.get('/users', {
+				params: { email }
+			});
+			const users = resp.data || [];
 
-      // 2) create new user
-      const newUser = await this.http.post('/users', {
-        email,
-        password
-      });
+			if (users.length === 0) {
+				throw new Error('User not found.');
+			}
 
-      // 3) save to localStorage (user is considered logged-in after sign up)
-      this.setCurrentUser(newUser);
-      return newUser;
-    }
+			const user = users[0];
+			if (user.password !== password) {
+				throw new Error('Invalid password.');
+			}
 
-    async login({ email, password }) {
-      if (!email || !password) {
-        throw new Error('Email and password are required.');
-      }
+			this._setCurrentUser(user);
+			return user;
+		}
 
-      const users = await this.http.get('/users', {
-        params: { email, password },
-        useCache: false
-      });
+		async logout() {
+			localStorage.removeItem(this.currentUserKey);
+		}
+	}
 
-      if (!Array.isArray(users) || users.length === 0) {
-        throw new Error('Invalid email or password.');
-      }
-
-      const user = users[0];
-      this.setCurrentUser(user);
-      return user;
-    }
-
-    logout() {
-      this.clearCurrentUser();
-    }
-  }
-
-  global.userService = new UserService(global.httpClient);
-})(window);
+	window.userService = new UserService();
+})();

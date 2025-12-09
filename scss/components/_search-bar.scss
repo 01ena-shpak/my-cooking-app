@@ -14,7 +14,7 @@
   max-width: rem(900);
   margin-inline: auto;
 
-  input[type="search"] {
+  input[type='search'] {
     flex-grow: 1;
     flex-shrink: 1;
     min-width: 0;
@@ -25,8 +25,8 @@
 
     font-family: $font-main;
     font-size: rem(16);
-    background-color: #FDFBF0;
-    border: 1px solid #8B3A3A;
+    background-color: #fdfbf0;
+    border: 1px solid #8b3a3a;
     border-radius: rem(12);
     outline: none;
 
@@ -44,7 +44,7 @@
     }
   }
 
-  button[type="submit"] {
+  button[type='submit'] {
     @extend .btn--primary;
 
     flex-grow: 0;
@@ -65,6 +65,8 @@
     }
   }
 
+  /* ------- ФІЛЬТРИ ------- */
+
   .recipes-filters {
     display: flex;
     align-items: center;
@@ -74,15 +76,75 @@
     width: 100%;
     margin-top: rem(8);
     order: 3;
-
     justify-content: center;
+  }
 
-    button {
-      @extend .btn--filter;
-      height: rem(48);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+  /* базова кнопка фільтра */
+  .recipes-filter-btn {
+    @extend .btn--filter;
+    height: rem(48);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* активний сортувальний фільтр (Time/Calories) */
+  .recipes-filter-btn--active {
+    box-shadow: 0 5px 0 mix-colors($color-secondary, #000, 80%);
+    transform: translateY(rem(-1));
+  }
+
+  /* контейнер для випадаючого Difficulty */
+  .recipes-filter-dropdown {
+    position: relative;
+    display: inline-flex;
+  }
+
+  .recipes-filter-btn--dropdown {
+    padding-right: rem(32);
+  }
+
+  .recipes-filter-dropdown__menu {
+    position: absolute;
+    top: calc(100% + #{rem(6)});
+    right: 0;
+
+    background-color: $color-bg;
+    border-radius: rem(12);
+    padding: rem(8);
+    min-width: rem(180);
+
+    box-shadow: 0 rem(10) rem(25) rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+
+    display: none;
+    z-index: 20;
+
+    &.is-open {
+      display: block;
+    }
+  }
+
+  .recipes-filter-dropdown__item {
+    width: 100%;
+    text-align: left;
+    border: none;
+    background-color: transparent;
+    padding: rem(8) rem(10);
+    border-radius: rem(8);
+    font-family: $font-main;
+    font-size: rem(14);
+    cursor: pointer;
+
+    @include transition(background-color 0.15s);
+
+    &:hover {
+      background-color: rgba($color-secondary, 0.1);
+    }
+
+    &.is-active {
+      background-color: rgba($color-secondary, 0.2);
+      font-weight: 600;
     }
   }
 }
@@ -98,7 +160,7 @@
       order: 0;
     }
 
-    input[type="search"] {
+    input[type='search'] {
       min-width: rem(250);
     }
   }
