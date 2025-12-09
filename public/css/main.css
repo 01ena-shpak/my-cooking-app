@@ -145,7 +145,7 @@ main {
     text-decoration: underline;
   }
 }
-.btn, .btn--outline, .btn--filter, .recipes-search-form .recipes-filters button, .btn--primary, button[type=submit], .recipe-favorite-button, .recipe-back__link, .hero-cta, .recipe-card__button, .recipes-search-form button[type=submit] {
+.btn, .btn--outline, .auth-controls a:first-of-type, .btn--filter, .recipes-search-form .recipes-filters button, .btn--primary, button[type=submit], .recipe-favorite-button, .recipe-back__link, .hero-cta, .recipe-card__button, .recipes-search-form button[type=submit], .auth-controls a:last-of-type, .user-menu__logout {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -160,26 +160,26 @@ main {
   white-space: nowrap;
   transition: background-color 0.2s, color 0.2s, transform 0.1s, box-shadow 0.1s, border-color 0.2s;
 }
-.btn:active, .btn--outline:active, .btn--filter:active, .recipes-search-form .recipes-filters button:active, .btn--primary:active, button[type=submit]:active, .recipe-favorite-button:active, .recipe-back__link:active, .hero-cta:active, .recipe-card__button:active {
+.btn:active, .btn--outline:active, .auth-controls a:active:first-of-type, .btn--filter:active, .recipes-search-form .recipes-filters button:active, .btn--primary:active, button[type=submit]:active, .recipe-favorite-button:active, .recipe-back__link:active, .hero-cta:active, .recipe-card__button:active, .auth-controls a:active:last-of-type, .user-menu__logout:active {
   transform: translateY(0.125rem);
   box-shadow: none !important;
 }
 
-.btn--primary, button[type=submit], .recipe-favorite-button, .recipe-back__link, .hero-cta, .recipe-card__button, .recipes-search-form button[type=submit] {
+.btn--primary, button[type=submit], .recipe-favorite-button, .recipe-back__link, .hero-cta, .recipe-card__button, .recipes-search-form button[type=submit], .auth-controls a:last-of-type, .user-menu__logout {
   background-color: #F26A2E;
   color: #fff;
   box-shadow: 0 4px 0 rgb(193.6, 84.8, 36.8);
 }
-.btn--primary:hover, button[type=submit]:hover, .recipe-favorite-button:hover, .recipe-back__link:hover, .hero-cta:hover, .recipe-card__button:hover {
+.btn--primary:hover, button[type=submit]:hover, .recipe-favorite-button:hover, .recipe-back__link:hover, .hero-cta:hover, .recipe-card__button:hover, .auth-controls a:hover:last-of-type, .user-menu__logout:hover {
   background-color: rgb(243.4932432432, 123.1148648649, 70.0067567568);
   transform: translateY(-0.0625rem);
   box-shadow: 0 5px 0 rgb(193.6, 84.8, 36.8);
 }
-.btn--primary:active, button[type=submit]:active, .recipe-favorite-button:active, .recipe-back__link:active, .hero-cta:active, .recipe-card__button:active {
+.btn--primary:active, button[type=submit]:active, .recipe-favorite-button:active, .recipe-back__link:active, .hero-cta:active, .recipe-card__button:active, .auth-controls a:active:last-of-type, .user-menu__logout:active {
   transform: translateY(0.0625rem);
   box-shadow: none;
 }
-.btn--primary, button[type=submit], .recipe-favorite-button, .recipe-back__link, .hero-cta, .recipe-card__button, .recipes-search-form button[type=submit] {
+.btn--primary, button[type=submit], .recipe-favorite-button, .recipe-back__link, .hero-cta, .recipe-card__button, .recipes-search-form button[type=submit], .auth-controls a:last-of-type, .user-menu__logout {
   padding: 0.625rem 1.75rem;
   font-size: 0.9375rem;
 }
@@ -203,14 +203,14 @@ main {
   font-size: 0.9375rem;
 }
 
-.btn--outline {
+.btn--outline, .auth-controls a:first-of-type {
   background-color: transparent;
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.6);
   box-shadow: none;
   padding: 0.625rem 1.5rem;
 }
-.btn--outline:hover {
+.btn--outline:hover, .auth-controls a:hover:first-of-type {
   border-color: #fff;
   background-color: rgba(255, 255, 255, 0.1);
 }
@@ -257,6 +257,15 @@ main {
   align-items: center;
   gap: 0.5rem;
   font-size: 0.875rem;
+  position: relative;
+}
+
+/* --- анонімний стан --- */
+.auth-controls__anonymous {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .auth-controls a {
@@ -266,28 +275,103 @@ main {
   transition: background-color 0.2s, color 0.2s, transform 0.1s, box-shadow 0.1s;
 }
 
-.auth-controls a:first-of-type {
+.auth-controls > button {
+  display: none;
+}
+
+/* --- User menu (залогінений стан) --- */
+.user-menu {
+  position: relative;
+  display: inline-flex;
+}
+
+.user-menu__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.375rem 0.875rem;
+  border-radius: 62.4375rem;
+  border: 1px solid rgba(255, 255, 255, 0.7);
   background-color: transparent;
-  border-color: rgba(255, 255, 255, 0.7);
-}
-
-.auth-controls a:last-of-type {
-  background-color: #F26A2E;
   color: #F9F4E1;
-  box-shadow: 0 3px 0 rgb(193.6, 84.8, 36.8);
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s, box-shadow 0.1s, border-color 0.2s;
+}
+.user-menu__trigger:hover, .user-menu__trigger:focus-visible {
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.9);
 }
 
-.auth-controls a:hover {
-  transform: translateY(0.0625rem);
-  box-shadow: 0 2px 0 rgb(193.6, 84.8, 36.8);
+.user-avatar {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: #F26A2E;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #F9F4E1;
 }
 
-.auth-controls a:last-of-type:active {
-  transform: translateY(0.1875rem);
-  box-shadow: none;
+.user-menu__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.1;
 }
 
-.user-greeting {
+.user-menu__hello {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.user-menu__name {
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+/* дропдаун */
+.user-menu__dropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.5rem);
+  padding: 0.75rem 1rem;
+  background-color: #F9F4E1;
+  color: #4A1E1E;
+  border-radius: 1rem;
+  min-width: 13.75rem;
+  box-shadow: 0 0.625rem 1.5625rem rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(0.25rem);
+  transition: opacity 0.15s, transform 0.15s, visibility 0.15s;
+  z-index: 20;
+}
+
+.user-menu__dropdown--open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.user-menu__signed-as {
+  font-size: 0.875rem;
+  margin-bottom: 0.625rem;
+}
+.user-menu__signed-as strong {
+  font-weight: 700;
+}
+
+/* ТУТ головна зміна: primary-кнопка, тобто помаранчева */
+.user-menu__logout {
+  width: 100%;
+}
+
+/* favorites прихований, коли додаємо клас visually-hidden */
+.js-nav-favorites.visually-hidden {
   display: none;
 }
 
@@ -308,12 +392,6 @@ main {
   }
   .auth-controls a {
     padding: 0.625rem 1.5rem;
-  }
-  .hero-text {
-    max-width: 30rem;
-  }
-  .hero-image {
-    max-width: 40.625rem;
   }
 }
 .site-footer {

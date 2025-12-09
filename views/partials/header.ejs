@@ -6,18 +6,64 @@
       <ul>
         <li><a href="/" data-i18n="nav.home">Home</a></li>
         <li><a href="/recipes" data-i18n="nav.recipes">Recipes</a></li>
-        <li><a href="/favorites" data-i18n="nav.favorites">Favorites</a></li>
+        <li class="js-nav-favorites">
+          <a href="/favorites" data-i18n="nav.favorites">Favorites</a>
+        </li>
       </ul>
     </nav>
 
     <div class="auth-controls">
-	<a href="/registration?mode=signin" data-i18n="nav.signIn">Sign in</a>
-	<a href="/registration?mode=signup" data-i18n="nav.signUp">Sign up</a>
+      <!-- СТАН: анонімний користувач -->
+      <div class="auth-controls__anonymous">
+        <a
+          href="/registration?mode=signin"
+          class="btn--outline"
+          data-i18n="nav.signIn"
+        >
+          Sign in
+        </a>
+        <a
+          href="/registration?mode=signup"
+          class="btn--primary"
+          data-i18n="nav.signUp"
+        >
+          Sign up
+        </a>
+      </div>
 
-	<span class="user-greeting" data-i18n="nav.greeting">
-		Hello, Olena!
-	</span>
-</div>
+      <!-- СТАН: залогінений користувач -->
+      <div class="user-menu visually-hidden">
+        <button
+          type="button"
+          class="user-menu__trigger"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <span class="user-avatar">
+            <span class="user-avatar__letter">U</span>
+          </span>
+          <span class="user-menu__text">
+            <span class="user-menu__hello" data-i18n="nav.greeting">
+              Hello,
+            </span>
+            <span class="user-menu__name js-user-name">user</span>
+          </span>
+        </button>
 
+        <div class="user-menu__dropdown" role="menu">
+          <p class="user-menu__signed-as">
+            <span data-i18n="nav.signedInAs">Signed in as</span>
+            <strong class="js-user-name">user</strong>
+          </p>
+          <button
+            type="button"
+            class="btn--primary user-menu__logout js-logout"
+            data-i18n="nav.signOut"
+          >
+            Sign out
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </header>

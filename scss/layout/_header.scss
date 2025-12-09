@@ -37,6 +37,13 @@
 .auth-controls {
   @include flex-center(rem(8));
   font-size: rem(14);
+  position: relative;
+}
+
+/* --- анонімний стан --- */
+
+.auth-controls__anonymous {
+  @include flex-center(rem(8));
 }
 
 .auth-controls a {
@@ -47,39 +54,127 @@
 }
 
 .auth-controls a:first-of-type {
-  background-color: transparent;
-  border-color: rgba(255, 255, 255, 0.7);
+  @extend .btn--outline;
 }
 
 .auth-controls a:last-of-type {
-  background-color: $color-accent;
-  color: $color-text-light;
-  box-shadow: 0 3px 0 mix-colors($color-accent, #000, 80%);
+  @extend .btn--primary;
 }
 
-.auth-controls a:hover {
-  transform: translateY(rem(1));
-  box-shadow: 0 2px 0 mix-colors($color-accent, #000, 80%);
-}
-
-.auth-controls a:last-of-type:active {
-  transform: translateY(rem(3));
-  box-shadow: none;
-}
-
-.user-greeting {
+.auth-controls > button {
   display: none;
 }
 
+/* --- User menu (залогінений стан) --- */
+
+.user-menu {
+  position: relative;
+  display: inline-flex;
+}
+
+.user-menu__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: rem(10);
+  padding: rem(6) rem(14);
+  border-radius: rem(999);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background-color: transparent;
+  color: $color-text-light;
+  cursor: pointer;
+  @include transition(background-color 0.2s, transform 0.1s, box-shadow 0.1s, border-color 0.2s);
+
+  &:hover,
+  &:focus-visible {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.9);
+  }
+}
+
+.user-avatar {
+  width: rem(32);
+  height: rem(32);
+  border-radius: 50%;
+  background-color: $color-accent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: rem(16);
+  color: $color-text-light;
+}
+
+.user-menu__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.1;
+}
+
+.user-menu__hello {
+  font-size: rem(12);
+  opacity: 0.8;
+}
+
+.user-menu__name {
+  font-size: rem(14);
+  font-weight: 700;
+}
+
+/* дропдаун */
+
+.user-menu__dropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + #{rem(8)});
+  padding: rem(12) rem(16);
+  background-color: $color-bg;
+  color: $color-text-main;
+  border-radius: rem(16);
+  min-width: rem(220);
+  box-shadow: 0 rem(10) rem(25) rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(rem(4));
+  @include transition(opacity 0.15s, transform 0.15s, visibility 0.15s);
+  z-index: 20;
+}
+
+.user-menu__dropdown--open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.user-menu__signed-as {
+  font-size: rem(14);
+  margin-bottom: rem(10);
+
+  strong {
+    font-weight: 700;
+  }
+}
+
+/* ТУТ головна зміна: primary-кнопка, тобто помаранчева */
+.user-menu__logout {
+  @extend .btn--primary;
+  width: 100%;
+}
+
+/* favorites прихований, коли додаємо клас visually-hidden */
+.js-nav-favorites.visually-hidden {
+  display: none;
+}
 
 @media (min-width: $bp-lg) {
   .header-inner {
-    height: 80px;                
+    height: 80px;
     padding-block: 0;
   }
 
   .logo {
-    font-size: rem(26);          
+    font-size: rem(26);
   }
 
   .main-nav a {
@@ -92,15 +187,6 @@
   }
 
   .auth-controls a {
-    padding: rem(10) rem(24);    
+    padding: rem(10) rem(24);
   }
-
-  .hero-text {
-  max-width: rem(480); 
-  }
-
-  .hero-image {
-  max-width: rem(650); 
-  }
-
 }

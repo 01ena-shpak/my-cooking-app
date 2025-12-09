@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "id": "8354",
+      "email": "shpak.olena@lll.kpi.ua",
+      "password": "olena123"
+    },
+    {
+      "id": "5017",
+      "email": "user@lll.kpi.ua",
+      "password": "user123"
+    }
+  ],
+  "recipes": [],
+  "favorites": []
+}
