@@ -3,6 +3,29 @@
 
     let cardTemplate = null;
 
+    function getFavoritesKey() {
+        try {
+            const raw = localStorage.getItem('currentUser');
+            if (!raw) return 'favorites_anon';
+
+            const user = JSON.parse(raw);
+            const idPart = user.id || user.email || 'anon';
+            return `favorites_${idPart}`;
+        } catch {
+            return 'favorites_anon';
+        }
+    }
+
+    function loadFavoritesIds() {
+        const key = getFavoritesKey();
+        return JSON.parse(localStorage.getItem(key) || '[]');
+    }
+
+    function saveFavoritesIds(ids) {
+        const key = getFavoritesKey();
+        localStorage.setItem(key, JSON.stringify(ids));
+    }
+
     const state = {
         q: "",
         difficulty: "all",
@@ -119,7 +142,8 @@
 
         const strId = String(id);
 
-        const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+        //const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+        const favorites = loadFavoritesIds();
         let isFav = favorites.includes(strId);
 
         updateBtnStyle(btn, isFav);
@@ -130,7 +154,8 @@
         newBtn.addEventListener("click", () => {
             isFav = !isFav;
 
-            const currentFavs = JSON.parse(localStorage.getItem("favorites") || "[]");
+            //const currentFavs = JSON.parse(localStorage.getItem("favorites") || "[]");
+            const currentFavs = loadFavoritesIds();
             
             if (isFav) {
                 if (!currentFavs.includes(strId)) currentFavs.push(strId);
@@ -139,7 +164,8 @@
                 if (index > -1) currentFavs.splice(index, 1);
             }
 
-            localStorage.setItem("favorites", JSON.stringify(currentFavs));
+            //localStorage.setItem("favorites", JSON.stringify(currentFavs));
+            saveFavoritesIds(currentFavs);
 
             updateBtnStyle(newBtn, isFav);
         });

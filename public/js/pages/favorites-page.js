@@ -4,6 +4,30 @@
     let cardTemplate = null;
     let allFavoriteRecipes = []; // тут зберігаємо повні об'єкти рецептів
 
+    function getFavoritesKey() {
+        try {
+            const raw = localStorage.getItem('currentUser');
+            if (!raw) return 'favorites_anon';
+
+            const user = JSON.parse(raw);
+            // використовуємо id, якщо є, інакше email
+            const idPart = user.id || user.email || 'anon';
+            return `favorites_${idPart}`;
+        } catch {
+            return 'favorites_anon';
+        }
+    }
+
+    function loadFavoritesIds() {
+        const key = getFavoritesKey();
+        return JSON.parse(localStorage.getItem(key) || '[]');
+    }
+
+    function saveFavoritesIds(ids) {
+        const key = getFavoritesKey();
+        localStorage.setItem(key, JSON.stringify(ids));
+    }
+
     // стан саме для сторінки Favorites
     const state = {
         q: "",
@@ -66,7 +90,8 @@
         if (!grid) return;
 
         // отримуємо ID
-        const favoritesIds = JSON.parse(localStorage.getItem("favorites") || "[]");
+        //const favoritesIds = JSON.parse(localStorage.getItem("favorites") || "[]");
+        const favoritesIds = loadFavoritesIds();
 
         // якщо список ID зовсім пустий (користувач нічого не додав)
         if (favoritesIds.length === 0) {
@@ -178,7 +203,8 @@
         
         if (index > -1) {
             currentFavs.splice(index, 1);
-            localStorage.setItem("favorites", JSON.stringify(currentFavs));
+            //localStorage.setItem("favorites", JSON.stringify(currentFavs));
+            saveFavoritesIds(currentFavs); 
 
             allFavoriteRecipes = allFavoriteRecipes.filter(r => String(r.id) !== strId);
 

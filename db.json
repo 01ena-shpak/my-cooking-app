@@ -1,11 +1,24 @@
 {
   "users": [
-    { "id": "8354", "email": "shpak.olena@lll.kpi.ua", "password": "olena123" },
-    { "id": "5017", "email": "user@lll.kpi.ua", "password": "user123" }
+    {
+      "id": "8354",
+      "email": "shpak.olena@lll.kpi.ua",
+      "password": "olena123"
+    },
+    {
+      "id": "5017",
+      "email": "user@lll.kpi.ua",
+      "password": "user123"
+    },
+    {
+      "id": "f4a0",
+      "email": "user2@lll.kpi.ua",
+      "password": "user2123"
+    }
   ],
   "recipes": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Cozy Herb Chicken Pasta",
       "time": 25,
       "calories": 520,
@@ -30,7 +43,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Vegan Buddha Bowl",
       "time": 30,
       "calories": 450,
@@ -52,7 +65,7 @@
       ]
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Quick Avocado Toast",
       "time": 10,
       "calories": 300,
@@ -72,7 +85,7 @@
       ]
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "Garlic Butter Shrimp",
       "time": 15,
       "calories": 380,
@@ -93,7 +106,7 @@
       ]
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "Beef Stir-Fry with Vegetables",
       "time": 20,
       "calories": 610,
@@ -114,29 +127,281 @@
       ]
     },
     {
-      "id": 6,
+      "id": "6",
       "title": "Fresh Tomato Basil Soup",
       "time": 35,
       "calories": 280,
       "difficulty": "easy",
       "image": "/img/rec-desktop.png",
-      "ingredients": ["1kg tomatoes", "1 onion", "Fresh basil", "Vegetable broth"],
-      "instructions": ["Roast tomatoes.", "Sauté onion.", "Blend everything.", "Simmer with basil."]
+      "ingredients": [
+        "1kg tomatoes",
+        "1 onion",
+        "Fresh basil",
+        "Vegetable broth"
+      ],
+      "instructions": [
+        "Roast tomatoes.",
+        "Sauté onion.",
+        "Blend everything.",
+        "Simmer with basil."
+      ]
     },
-    { "id": 7, "title": "Spicy Korean Tofu Bowl", "time": 30, "calories": 480, "difficulty": "medium", "image": "/img/rec-desktop.png", "ingredients": ["Tofu", "Gochujang", "Rice", "Kimchi"], "instructions": ["Fry tofu.", "Mix sauce.", "Serve over rice."] },
-    { "id": 8, "title": "Lemon Garlic Salmon", "time": 22, "calories": 460, "difficulty": "easy", "image": "/img/rec-desktop.png", "ingredients": ["Salmon fillet", "Lemon", "Garlic", "Dill"], "instructions": ["Bake salmon with seasonings at 180C for 15 mins."] },
-    { "id": 9, "title": "Creamy Mushroom Risotto", "time": 40, "calories": 570, "difficulty": "hard", "image": "/img/rec-desktop.png", "ingredients": ["Arborio rice", "Mushrooms", "White wine", "Parmesan"], "instructions": ["Cook rice adding broth slowly.", "Sauté mushrooms.", "Mix."] },
-    { "id": 10, "title": "Crispy Chicken Caesar Wrap", "time": 18, "calories": 520, "difficulty": "easy", "image": "/img/rec-desktop.png", "ingredients": ["Tortilla", "Chicken breast", "Lettuce", "Caesar dressing"], "instructions": ["Grill chicken.", "Wrap with lettuce and sauce."] },
-    { "id": 11, "title": "Mediterranean Chickpea Salad", "time": 12, "calories": 330, "difficulty": "easy", "image": "/img/rec-desktop.png", "ingredients": ["Chickpeas", "Cucumber", "Feta cheese", "Olive oil"], "instructions": ["Chop veggies.", "Mix all ingredients."] },
-    { "id": 12, "title": "Thai Green Curry", "time": 35, "calories": 620, "difficulty": "hard", "image": "/img/rec-desktop.png", "ingredients": ["Green curry paste", "Coconut milk", "Bamboo shoots", "Chicken"], "instructions": ["Fry paste.", "Add coconut milk and meat.", "Simmer."] },
-    { "id": 13, "title": "Blueberry Protein Pancakes", "time": 20, "calories": 410, "difficulty": "easy", "image": "/img/rec-desktop.png", "ingredients": ["Oats", "Protein powder", "Blueberries", "Egg whites"], "instructions": ["Blend batter.", "Cook on skillet."] },
-    { "id": 14, "title": "Avocado Mango Smoothie", "time": 5, "calories": 250, "difficulty": "easy", "image": "/img/rec-desktop.png", "ingredients": ["Mango", "Avocado", "Spinach", "Almond milk"], "instructions": ["Blend until smooth."] },
-    { "id": 15, "title": "Turkey Meatballs", "time": 30, "calories": 540, "difficulty": "medium", "image": "/img/rec-desktop.png", "ingredients": ["Ground turkey", "Breadcrumbs", "Egg", "Tomato sauce"], "instructions": ["Form balls.", "Bake.", "Simmer in sauce."] },
-    { "id": 16, "title": "Baked Sweet Potato Fries", "time": 30, "calories": 320, "difficulty": "easy", "image": "/img/rec-desktop.png", "ingredients": ["Sweet potato", "Paprika", "Olive oil"], "instructions": ["Cut potatoes.", "Season.", "Bake until crispy."] },
-    { "id": 17, "title": "Greek Yogurt Parfait", "time": 7, "calories": 280, "difficulty": "easy", "image": "/img/rec-desktop.png", "ingredients": ["Greek yogurt", "Honey", "Granola", "Berries"], "instructions": ["Layer ingredients in a glass."] },
-    { "id": 18, "title": "Pesto Penne with Veggies", "time": 22, "calories": 500, "difficulty": "medium", "image": "/img/rec-desktop.png", "ingredients": ["Penne pasta", "Pesto sauce", "Zucchini", "Cherry tomatoes"], "instructions": ["Cook pasta.", "Sauté veggies.", "Mix with pesto."] },
-    { "id": 19, "title": "Chicken Teriyaki Bowl", "time": 28, "calories": 580, "difficulty": "medium", "image": "/img/rec-desktop.png", "ingredients": ["Chicken thighs", "Teriyaki sauce", "Rice", "Sesame seeds"], "instructions": ["Cook rice.", "Glaze chicken in sauce.", "Serve."] },
-    { "id": 20, "title": "Classic Margherita Pizza", "time": 45, "calories": 690, "difficulty": "hard", "image": "/img/rec-desktop.png", "ingredients": ["Pizza dough", "Tomato sauce", "Mozzarella", "Basil"], "instructions": ["Stretch dough.", "Top with sauce and cheese.", "Bake at max temp."] }
+    {
+      "id": "7",
+      "title": "Spicy Korean Tofu Bowl",
+      "time": 30,
+      "calories": 480,
+      "difficulty": "medium",
+      "image": "/img/rec-desktop.png",
+      "ingredients": [
+        "Tofu",
+        "Gochujang",
+        "Rice",
+        "Kimchi"
+      ],
+      "instructions": [
+        "Fry tofu.",
+        "Mix sauce.",
+        "Serve over rice."
+      ]
+    },
+    {
+      "id": "8",
+      "title": "Lemon Garlic Salmon",
+      "time": 22,
+      "calories": 460,
+      "difficulty": "easy",
+      "image": "/img/rec-desktop.png",
+      "ingredients": [
+        "Salmon fillet",
+        "Lemon",
+        "Garlic",
+        "Dill"
+      ],
+      "instructions": [
+        "Bake salmon with seasonings at 180C for 15 mins."
+      ]
+    },
+    {
+      "id": "9",
+      "title": "Creamy Mushroom Risotto",
+      "time": 40,
+      "calories": 570,
+      "difficulty": "hard",
+      "image": "/img/rec-desktop.png",
+      "ingredients": [
+        "Arborio rice",
+        "Mushrooms",
+        "White wine",
+        "Parmesan"
+      ],
+      "instructions": [
+        "Cook rice adding broth slowly.",
+        "Sauté mushrooms.",
+        "Mix."
+      ]
+    },
+    {
+      "id": "10",
+      "title": "Crispy Chicken Caesar Wrap",
+      "time": 18,
+      "calories": 520,
+      "difficulty": "easy",
+      "image": "/img/rec-desktop.png",
+      "ingredients": [
+        "Tortilla",
+        "Chicken breast",
+        "Lettuce",
+        "Caesar dressing"
+      ],
+      "instructions": [
+        "Grill chicken.",
+        "Wrap with lettuce and sauce."
+      ]
+    },
+    {
+      "id": "11",
+      "title": "Mediterranean Chickpea Salad",
+      "time": 12,
+      "calories": 330,
+      "difficulty": "easy",
+      "image": "/img/rec-desktop.png",
+      "ingredients": [
+        "Chickpeas",
+        "Cucumber",
+        "Feta cheese",
+        "Olive oil"
+      ],
+      "instructions": [
+        "Chop veggies.",
+        "Mix all ingredients."
+      ]
+    },
+    {
+      "id": "12",
+      "title": "Thai Green Curry",
+      "time": 35,
+      "calories": 620,
+      "difficulty": "hard",
+      "image": "/img/rec-desktop.png",
+      "ingredients": [
+        "Green curry paste",
+        "Coconut milk",
+        "Bamboo shoots",
+        "Chicken"
+      ],
+      "instructions": [
+        "Fry paste.",
+        "Add coconut milk and meat.",
+        "Simmer."
+      ]
+    },
+    {
+      "id": "13",
+      "title": "Blueberry Protein Pancakes",
+      "time": 20,
+      "calories": 410,
+      "difficulty": "easy",
+      "image": "/img/rec-desktop.png",
+      "ingredients": [
+        "Oats",
+        "Protein powder",
+        "Blueberries",
+        "Egg whites"
+      ],
+      "instructions": [
+        "Blend batter.",
+        "Cook on skillet."
+      ]
+    },
+    {
+      "id": "14",
+      "title": "Avocado Mango Smoothie",
+      "time": 5,
+      "calories": 250,
+      "difficulty": "easy",
+      "image": "/img/rec-desktop.png",
+      "ingredients": [
+        "Mango",
+        "Avocado",
+        "Spinach",
+        "Almond milk"
+      ],
+      "instructions": [
+        "Blend until smooth."
+      ]
+    },
+    {
+      "id": "15",
+      "title": "Turkey Meatballs",
+      "time": 30,
+      "calories": 540,
+      "difficulty": "medium",
+      "image": "/img/rec-desktop.png",
+      "ingredients": [
+        "Ground turkey",
+        "Breadcrumbs",
+        "Egg",
+        "Tomato sauce"
+      ],
+      "instructions": [
+        "Form balls.",
+        "Bake.",
+        "Simmer in sauce."
+      ]
+    },
+    {
+      "id": "16",
+      "title": "Baked Sweet Potato Fries",
+      "time": 30,
+      "calories": 320,
+      "difficulty": "easy",
+      "image": "/img/rec-desktop.png",
+      "ingredients": [
+        "Sweet potato",
+        "Paprika",
+        "Olive oil"
+      ],
+      "instructions": [
+        "Cut potatoes.",
+        "Season.",
+        "Bake until crispy."
+      ]
+    },
+    {
+      "id": "17",
+      "title": "Greek Yogurt Parfait",
+      "time": 7,
+      "calories": 280,
+      "difficulty": "easy",
+      "image": "/img/rec-desktop.png",
+      "ingredients": [
+        "Greek yogurt",
+        "Honey",
+        "Granola",
+        "Berries"
+      ],
+      "instructions": [
+        "Layer ingredients in a glass."
+      ]
+    },
+    {
+      "id": "18",
+      "title": "Pesto Penne with Veggies",
+      "time": 22,
+      "calories": 500,
+      "difficulty": "medium",
+      "image": "/img/rec-desktop.png",
+      "ingredients": [
+        "Penne pasta",
+        "Pesto sauce",
+        "Zucchini",
+        "Cherry tomatoes"
+      ],
+      "instructions": [
+        "Cook pasta.",
+        "Sauté veggies.",
+        "Mix with pesto."
+      ]
+    },
+    {
+      "id": "19",
+      "title": "Chicken Teriyaki Bowl",
+      "time": 28,
+      "calories": 580,
+      "difficulty": "medium",
+      "image": "/img/rec-desktop.png",
+      "ingredients": [
+        "Chicken thighs",
+        "Teriyaki sauce",
+        "Rice",
+        "Sesame seeds"
+      ],
+      "instructions": [
+        "Cook rice.",
+        "Glaze chicken in sauce.",
+        "Serve."
+      ]
+    },
+    {
+      "id": "20",
+      "title": "Classic Margherita Pizza",
+      "time": 45,
+      "calories": 690,
+      "difficulty": "hard",
+      "image": "/img/rec-desktop.png",
+      "ingredients": [
+        "Pizza dough",
+        "Tomato sauce",
+        "Mozzarella",
+        "Basil"
+      ],
+      "instructions": [
+        "Stretch dough.",
+        "Top with sauce and cheese.",
+        "Bake at max temp."
+      ]
+    }
   ],
   "favorites": []
 }
