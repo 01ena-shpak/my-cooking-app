@@ -1,41 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<%- include('../partials/head') %>
-	<script src="/js/pages/recipes-page.js" defer></script>
+    <%- include('../partials/head') %>
+    <script src="/js/pages/recipes-page.js" defer></script>
 </head>
 <body>
-	<%- include('../partials/header') %>
+    <%- include('../partials/header') %>
 
-	<main>
-		<section class="recipes-search" aria-labelledby="recipes-title">
-			<h1 id="recipes-title" data-i18n="recipes.title">
-				Explore recipes made just for you
-			</h1>
+    <main class="recipe-page">
+        <div id="view-list">
+            <section class="recipes-search" aria-labelledby="recipes-title">
+                <h1 id="recipes-title" data-i18n="recipes.title">
+                    Explore recipes made just for you
+                </h1>
+                <%- include('../partials/search-bar') %>
+            </section>
 
-			<%- include('../partials/search-bar') %>
-		</section>
+            <section class="recipes-results" aria-label="Recipe results">
+                <div class="recipes-grid js-recipes-grid">
+                    <%- include('../partials/recipe-card') %>
+                </div>
 
-		<section class="recipes-results" aria-label="Recipe results">
-			<div class="recipes-grid js-recipes-grid">
-				<!-- сюди JS вставлятиме картки рецептів -->
-				 <%- include('../partials/recipe-card') %>
-			</div>
+                <div class="recipes-pagination js-recipes-pagination">
+                    </div>
+            </section>
 
-			<div class="recipes-pagination js-recipes-pagination">
-    			<!-- сюди JS вставить кнопки пагінації -->
-  			</div>
-		</section>
+            <section class="recipes-empty visually-hidden" aria-label="No recipes found">
+                <p data-i18n="recipes.emptyText">
+                    No recipes found. Try using fewer filters or search by a different ingredient.
+                </p>
+            </section>
+        </div>
 
-		<section class="recipes-empty visually-hidden" aria-label="No recipes found">
-  			<p data-i18n="recipes.emptyText">
-    			No recipes found. Try using fewer filters or search by a different ingredient.
-    			Our AI will keep learning from your choices.
-  			</p>
-		</section>
-	</main>
+        <div id="view-detail" hidden>
+            <section class="recipe-hero" aria-labelledby="recipe-detail-title">
+                <div class="recipe-hero__image">
+                    <img class="js-detail-img" src="" alt="Recipe">
+                </div>
 
-	<%- include('../partials/footer') %>
+                <div class="recipe-hero__info">
+                    <h1 id="recipe-detail-title" class="js-detail-title">Recipe Title</h1>
+
+                    <div class="recipe-hero__meta">
+                        <span class="recipe-meta__time js-detail-time">0 min</span>
+                        <span class="recipe-meta__calories js-detail-calories">0 kcal</span>
+                    </div>
+
+                    <button type="button" class="recipe-favorite-button js-fav-btn">
+                        Save to Favorites
+                    </button>
+                </div>
+            </section>
+
+            <section class="recipe-content" aria-label="Recipe details">
+                <article class="recipe-ingredients">
+                    <h2 data-i18n="recipe.ingredientsTitle">Ingredients</h2>
+                    <ul class="js-detail-ingredients"></ul>
+                </article>
+
+                <article class="recipe-instructions">
+                    <h2 data-i18n="recipe.instructionsTitle">Instructions</h2>
+                    <ol class="js-detail-instructions"></ol>
+                </article>
+            </section>
+
+            <section class="recipe-back">
+                <a href="#/list" class="recipe-back__link">
+                    Back to Recipes
+                </a>
+            </section>
+        </div>
+    </main>
+
+    <%- include('../partials/footer') %>
 </body>
 </html>
-

@@ -973,7 +973,6 @@ main {
   padding-block: 3.75rem;
   max-width: 31.25rem;
   margin-inline: auto;
-  display: none;
 }
 .recipes-empty p {
   font-size: 1.125rem;
@@ -1005,6 +1004,33 @@ main {
   .recipes-pagination .pagination-info {
     font-size: 1rem;
   }
+}
+
+.recipe-favorite-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 24px;
+  border-radius: 999px;
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+  background-color: #f0f0f0;
+  color: #333;
+  margin-top: 20px;
+}
+.recipe-favorite-button:hover {
+  background-color: #e0e0e0;
+}
+.recipe-favorite-button.is-favorite {
+  background-color: #F26A2E;
+  color: white;
+  box-shadow: 0 4px 10px rgba(230, 57, 70, 0.3);
+}
+.recipe-favorite-button.is-favorite:hover {
+  background-color: #9B3A3A;
 }
 
 .favorites-search {
@@ -1084,7 +1110,6 @@ main {
   padding-block: 3.75rem;
   max-width: 31.25rem;
   margin-inline: auto;
-  display: none;
 }
 .favorites-empty p {
   font-size: 1.125rem;
@@ -1093,6 +1118,46 @@ main {
 }
 .favorites-empty.is-visible {
   display: block;
+}
+
+.favorites-no-match {
+  width: min(100% - 32px, 1120px);
+  margin-inline: auto;
+  text-align: center;
+  padding-block: 3.75rem;
+  max-width: 31.25rem;
+  margin-inline: auto;
+}
+.favorites-no-match p {
+  font-size: 1.125rem;
+  color: rgba(74, 30, 30, 0.7);
+  line-height: 1.6;
+}
+
+.favorites-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+  padding-top: 1.875rem;
+  border-top: 1px solid rgba(74, 30, 30, 0.1);
+}
+.favorites-pagination .pagination-info {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: #4A1E1E;
+  min-width: 7.5rem;
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .favorites-pagination {
+    gap: 0.625rem;
+  }
+  .favorites-pagination .pagination-info {
+    font-size: 1rem;
+  }
 }
 
 .recipe-hero,

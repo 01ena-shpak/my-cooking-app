@@ -38,8 +38,7 @@
   text-align: center;
   padding-block: rem(60);
   max-width: rem(500);
-  margin-inline: auto;
-  display: none; 
+  margin-inline: auto; 
 
   p {
     font-size: rem(18);
@@ -72,6 +71,37 @@
     
     .pagination-info {
       font-size: rem(16);
+    }
+  }
+}
+
+.recipe-favorite-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 24px;
+  border-radius: 999px;
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+  
+  background-color: #f0f0f0;
+  color: #333;
+  margin-top: 20px;
+
+  &:hover {
+    background-color: #e0e0e0;
+  }
+
+  &.is-favorite {
+    background-color: $color-accent; 
+    color: white;
+    box-shadow: 0 4px 10px rgba(230, 57, 70, 0.3);
+    
+    &:hover {
+      background-color: $color-primary;
     }
   }
 }
